@@ -21,15 +21,12 @@ def my_form_post():
 def map_post():
     city = request.form['city']
     result = get_cities_for_title(city)
-    array = []
-    for r in result:
-        array.append(r)
     print(str(array))
     mymap = Map(
         identifier="view-side",
         lat=0,
         lng=0,
-        markers=array
+        markers=result
     )
     return render_template('example.html', mymap=mymap)
 @app.route('/array')
