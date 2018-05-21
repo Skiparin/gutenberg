@@ -36,6 +36,11 @@ def get_titles_for_city(city):
         ba.author_id = a.id and
         c.id = bc.city_id and
         bc.book_id = b.id;"""), city_name=city)
+    print(result)
+    array = []
+    for r in result:
+        print(r)
+        array.append((r[0],r[1]))
     return result
 
 def get_cities_for_title(title):
