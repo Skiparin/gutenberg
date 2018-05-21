@@ -27,7 +27,7 @@ def create_session():
 def get_titles_for_city(city):
     session = create_session()
     conn = session.connect()
-    conn.execute(text("""
+    result = conn.execute(text("""
         select b.title, a.name
         from books b, authors a, cities c,
         books_authors ba, books_cities bc
@@ -36,21 +36,23 @@ def get_titles_for_city(city):
         ba.author_id = a.id and
         c.id = bc.city_id and
         bc.book_id = b.id;"""), city_name=city)
+    return result
 
 def get_cities_for_title(title):
     session = create_session()
     conn = session.connect()
-    conn.execute(text("""
+    result = conn.execute(text("""
         select c.x_cord, c.y_cord from
         cities c, books b, books_cities bc
         where b.title = :title and
         b.id = bc.book_id and
         bc.city_id = c.id;"""), title=title)
+    return result
 
 def get_titles_and_cords_for_author(author):
     session = create_session()
     conn = session.connect()
-    conn.execute(text("""
+    result = conn.execute(text("""
         select b.title, c.x_cord, c.y_cord
         from books b, authors a, cities c,
         books_authors ba, books_cities bc
@@ -59,16 +61,19 @@ def get_titles_and_cords_for_author(author):
         ba.book_id = b.id and
         b.id = bc.book_id and
         bc.city_id = c.id;"""), author=author)
+    return result
+
 
 def get_title_for_cords(x,y,r):
     session = create_session()
     conn = session.connect()
-    conn.execute(text("""
+    result = conn.execute(text("""
         select b.title, c.name 
         from books b, cities c, books_cities bc
         where circle'((:x,:y), :r)' @> point(x_cord,y_cord) and
         c.id = bc.city_id and
         bc.book_id = b.id;"""), x=x,y=y,r=r)
+    return result
 
 
 
