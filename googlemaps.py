@@ -23,8 +23,8 @@ def map_post():
     result = get_cities_for_title(city)
     mymap = Map(
         identifier="view-side",
-        lat=float(la),
-        lng=float(lo),
+        lat=0,
+        lng=0,
         markers=result
     )
     return render_template('example.html', mymap=mymap, sndmap=sndmap)
