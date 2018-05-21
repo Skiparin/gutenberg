@@ -53,7 +53,9 @@ def get_cities_for_title(title):
     for r in result:
         print(r)
         print("r")
-        array.append((r[0],r[1]))
+        print(r[0])
+        array.append(r[0])
+        array.append(r[1])
     return result
 
 def get_titles_and_cords_for_author(author):
