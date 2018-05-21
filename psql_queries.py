@@ -53,10 +53,8 @@ def get_cities_for_title(title):
     for r in result:
         print(r)
         print("r")
-        print(r[0])
-        array.append(r[0])
-        array.append(r[1])
-    return result
+        array.append((r[0],r[1]))
+    return array
 
 def get_titles_and_cords_for_author(author):
     engine = db_connect()
