@@ -25,7 +25,7 @@ def create_session():
     return session
 
 def get_titles_for_city(city):
-    engine = create_engine()
+    engine = db_connect()
     conn = engine.connect()
     result = conn.execute(text("""
         select b.title, a.name
@@ -39,7 +39,7 @@ def get_titles_for_city(city):
     return result
 
 def get_cities_for_title(title):
-    engine = create_engine()
+    engine = db_connect()
     conn = engine.connect()
     result = conn.execute(text("""
         select c.x_cord, c.y_cord from
@@ -50,7 +50,7 @@ def get_cities_for_title(title):
     return result
 
 def get_titles_and_cords_for_author(author):
-    engine = create_engine()
+    engine = db_connect()
     conn = engine.connect()
     result = conn.execute(text("""
         select b.title, c.x_cord, c.y_cord
@@ -65,7 +65,7 @@ def get_titles_and_cords_for_author(author):
 
 
 def get_title_for_cords(x,y,r):
-    engine = create_engine()
+    engine = db_connect()
     conn = engine.connect()
     result = conn.execute(text("""
         select b.title, c.name 
