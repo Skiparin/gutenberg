@@ -24,6 +24,7 @@ def map_post():
     array = []
     for r in result:
         array.append(r)
+    print(str(array))
     mymap = Map(
         identifier="view-side",
         lat=0,
