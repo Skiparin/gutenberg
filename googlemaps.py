@@ -21,13 +21,19 @@ def my_form_post():
 def map_post():
     city = request.form['city']
     result = get_cities_for_title(city)
-    return redirect(url_for('mapview',la = float(result[0]), lo = float(result[1])))
+    mymap = Map(
+        identifier="view-side",
+        lat=float(la),
+        lng=float(lo),
+        markers=result
+    )
+    return render_template('example.html', mymap=mymap, sndmap=sndmap)
 @app.route('/array')
 def array_view():
     names_of_cities = ["London", "Paris", "Copenhagen","blu"]
     return render_template('city.html', names=names_of_cities)
 
-@app.route("/map/<la>/<lo>")
+@app.route("/map")
 def mapview(la, lo):
     # creating a map in the view
     mymap = Map(
