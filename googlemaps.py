@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for
 from flask_googlemaps import GoogleMaps
 from flask_googlemaps import Map
 from database import database
+from psql_queries import get_cities_for_title
 
 app = Flask(__name__, template_folder=".")
 GoogleMaps(app)
@@ -19,7 +20,7 @@ def my_form_post():
 @app.route('/map',methods=['POST'])
 def map_post():
     city = request.form['city']
-    result = database.getCityCord(city)
+    result = get_cities_for_title(city)
     return redirect(url_for('mapview',la = float(result[0]), lo = float(result[1])))
 @app.route('/array')
 def array_view():
