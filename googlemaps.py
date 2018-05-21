@@ -30,7 +30,7 @@ def map_post():
         lng=0,
         markers=array
     )
-    return render_template('example.html', mymap=mymap, sndmap=sndmap)
+    return render_template('example.html', mymap=mymap)
 @app.route('/array')
 def array_view():
     names_of_cities = ["London", "Paris", "Copenhagen","blu"]
