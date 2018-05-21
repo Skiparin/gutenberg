@@ -25,8 +25,8 @@ def create_session():
     return session
 
 def get_titles_for_city(city):
-    session = create_session()
-    conn = session.connect()
+    engine = create_engine()
+    conn = engine.connect()
     result = conn.execute(text("""
         select b.title, a.name
         from books b, authors a, cities c,
@@ -39,8 +39,8 @@ def get_titles_for_city(city):
     return result
 
 def get_cities_for_title(title):
-    session = create_session()
-    conn = session.connect()
+    engine = create_engine()
+    conn = engine.connect()
     result = conn.execute(text("""
         select c.x_cord, c.y_cord from
         cities c, books b, books_cities bc
@@ -50,8 +50,8 @@ def get_cities_for_title(title):
     return result
 
 def get_titles_and_cords_for_author(author):
-    session = create_session()
-    conn = session.connect()
+    engine = create_engine()
+    conn = engine.connect()
     result = conn.execute(text("""
         select b.title, c.x_cord, c.y_cord
         from books b, authors a, cities c,
@@ -65,8 +65,8 @@ def get_titles_and_cords_for_author(author):
 
 
 def get_title_for_cords(x,y,r):
-    session = create_session()
-    conn = session.connect()
+    engine = create_engine()
+    conn = engine.connect()
     result = conn.execute(text("""
         select b.title, c.name 
         from books b, cities c, books_cities bc
