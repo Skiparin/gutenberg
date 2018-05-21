@@ -21,7 +21,6 @@ def my_form_post():
 def map_post():
     city = request.form['city']
     result = get_cities_for_title(city)
-    print(str(array))
     mymap = Map(
         identifier="view-side",
         lat=0,
