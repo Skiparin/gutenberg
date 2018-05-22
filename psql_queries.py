@@ -91,6 +91,7 @@ def get_title_for_cords(x,y,r):
         bc.book_id = b.id;"""))
     array = []
     for r in result:
+        print(r)
         array.append(r[0])
     return array
 
