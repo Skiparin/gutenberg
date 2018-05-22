@@ -45,7 +45,7 @@ def authors():
         lng=0,
         markers=result["cords"]
     )
-    return render_template('titles.html', mymap=mymap, result=result["titles"])
+    return render_template('authors.html', mymap=mymap, result=result["titles"])
 
 @app.route('/array')
 def array_view():
