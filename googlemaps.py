@@ -30,7 +30,7 @@ def map_post():
     return render_template('example.html', mymap=mymap)
 
 @app.route('/titles',methods=['POST'])
-def map_post():
+def titles():
     city = request.form['city']
     result = get_titles_for_city(city)
     return render_template('example.html', result=result)
