@@ -33,7 +33,7 @@ def map_post():
 def titles():
     city = request.form['city']
     result = get_titles_for_city(city)
-    return render_template('example.html', result=result)
+    return render_template('titles.html', result=result)
 
 @app.route('/array')
 def array_view():
