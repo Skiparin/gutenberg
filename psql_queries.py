@@ -28,14 +28,15 @@ def get_titles_for_city(city):
     engine = db_connect()
     conn = engine.connect()
     result = conn.execute(text("""
-        select b.title, a.name
+        select b.title, array_agg(a.name)
         from books b, authors a, cities c,
         books_authors ba, books_cities bc
         where c.name = :city_name and
         b.id = ba.book_id and
         ba.author_id = a.id and
         c.id = bc.city_id and
-        bc.book_id = b.id;"""), city_name=city)
+        bc.book_id = b.id
+        group by b.title;"""), city_name=city)
     array = []
     for r in result:
         temp_array = [r[0], r[1]]

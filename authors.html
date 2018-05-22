@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+            {{mymap.js}}
+    </head>
+    {{mymap.html}}
+    <body>
+    <table style="width: 100%">
+    {% for x in result %}
+        <tr>
+            <td>{{x[0]}}</td>
+        </tr>
+    {% endfor %}
+    </table>
+    </body>
+</html>
