@@ -61,14 +61,15 @@ def get_titles_and_cords_for_author(author):
     engine = db_connect()
     conn = engine.connect()
     result = conn.execute(text("""
-        select distinct b.title, c.x_cord, c.y_cord
+        select b.title, c.x_cord, c.y_cord
         from books b, authors a, cities c,
         books_authors ba, books_cities bc
         where a.name = :author and
         a.id = ba.author_id and
         ba.book_id = b.id and
         b.id = bc.book_id and
-        bc.city_id = c.id;"""), author=author)
+        bc.city_id = c.id
+        group by b.title;"""), author=author)
     r_dict = {}
     r_dict["titles"] = []
     r_dict["cords"] = []
