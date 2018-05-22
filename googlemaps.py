@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for
 from flask_googlemaps import GoogleMaps
 from flask_googlemaps import Map
 from database import database
-from psql_queries import get_cities_for_title, get_titles_for_city, get_titles_and_cords_for_author
+from psql_queries import get_cities_for_title, get_titles_for_city, get_titles_and_cords_for_author, get_title_for_cords
 
 app = Flask(__name__, template_folder=".")
 GoogleMaps(app)
@@ -46,6 +46,14 @@ def authors():
         markers=result["cords"]
     )
     return render_template('authors.html', mymap=mymap, result=result["titles"])
+
+@app.route('/radius',methods=['POST'])
+def radius():
+    x = request.form['x']
+    y = request.form['y']
+    r = request.form['r']
+    result = get_title_for_cords(x, y, r)
+    return render_template('radius.html', result=result)
 
 @app.route('/array')
 def array_view():
