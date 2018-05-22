@@ -69,7 +69,13 @@ def get_titles_and_cords_for_author(author):
         ba.book_id = b.id and
         b.id = bc.book_id and
         bc.city_id = c.id;"""), author=author)
-    return result
+    r_dict = {}
+    r_dict["titles"] = []
+    r_dict["cords"] = []
+    for r in result:
+        r_dict["titles"].append(r[0])
+        r_dict["cords"].append((float(r[1]),float(r[2])))
+    return r_dict
 
 
 def get_title_for_cords(x,y,r):
