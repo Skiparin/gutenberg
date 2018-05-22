@@ -84,14 +84,14 @@ def get_title_for_cords(x,y,r):
     engine = db_connect()
     conn = engine.connect()
     result = conn.execute(text("""
-        select b.title, c.name 
+        select b.title 
         from books b, cities c, books_cities bc
         where circle'(("""+ x + "," + y + ")," + r + """)' @> point(x_cord,y_cord) and
         c.id = bc.city_id and
         bc.book_id = b.id;"""))
     array = []
     for r in result:
-        array.append(r)
+        array.append(r[0])
     return array
 
 
