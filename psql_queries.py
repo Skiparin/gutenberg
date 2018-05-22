@@ -75,7 +75,7 @@ def get_titles_and_cords_for_author(author):
     r_dict["cords"] = []
     for r in result:
         r_dict["titles"].append(r[0])
-        for x,y in zip((r[1]),(r[2]))
+        for x,y in zip((r[1]),(r[2])):
             r_dict["cords"].append((float(x),float(y)))
     return r_dict
 
