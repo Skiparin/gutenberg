@@ -61,7 +61,7 @@ def get_titles_and_cords_for_author(author):
     engine = db_connect()
     conn = engine.connect()
     result = conn.execute(text("""
-        select b.title, c.x_cord, c.y_cord
+        select distinct b.title, c.x_cord, c.y_cord
         from books b, authors a, cities c,
         books_authors ba, books_cities bc
         where a.name = :author and
