@@ -69,7 +69,7 @@ def get_titles_and_cords_for_author(author):
         ba.book_id = b.id and
         b.id = bc.book_id and
         bc.city_id = c.id
-        group by b.title;"""), author=author)
+        group by b.title, c.x_cord, c.y_cord;"""), author=author)
     r_dict = {}
     r_dict["titles"] = []
     r_dict["cords"] = []
