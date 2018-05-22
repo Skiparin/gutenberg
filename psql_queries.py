@@ -36,7 +36,11 @@ def get_titles_for_city(city):
         ba.author_id = a.id and
         c.id = bc.city_id and
         bc.book_id = b.id;"""), city_name=city)
-    return result
+    array = []
+    for r in result:
+        temp_array = [r[0], r[1]]
+        array.append(temp_array)
+    return array
 
 def get_cities_for_title(title):
     engine = db_connect()
@@ -47,12 +51,8 @@ def get_cities_for_title(title):
         where b.title = :title and
         b.id = bc.book_id and
         bc.city_id = c.id;"""), title=title)
-    print(result)
-    print("result")
     array = []
     for r in result:
-        print(r)
-        print("r")
         array.append((float(r[0]),float(r[1])))
     return array
 
