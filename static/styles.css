@@ -60,12 +60,3 @@ td:last-child {
 .table-td {
 	text-align: left;
 }
-
-.error-msg {
-	display: inline-block;
-	margin-right: 10px;
-}
-
-.error-btn {
-	display: inline-block;
-}
