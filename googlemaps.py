@@ -32,8 +32,11 @@ def map_post():
 @app.route('/titles',methods=['POST'])
 def titles():
     city = request.form['city']
-    result = get_titles_for_city(city)
-    return render_template('titles.html', result=result)
+    if not city:
+        raise InvalidUsage('Enter a city', status_code=410)
+    else:
+        result = get_titles_for_city(city)
+        return render_template('titles.html', result=result)
 
 @app.route('/authors',methods=['POST'])
 def authors():
