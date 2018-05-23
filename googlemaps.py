@@ -67,17 +67,12 @@ def radius():
     x = request.form['x']
     y = request.form['y']
     r = request.form['r']
-    if not x or not y or not r:
+    if (not x or not y or not r):
         flash('Please enter x and y coordinates with a radius')
         return redirect(url_for('my_form'))
     else:
         result = get_title_for_cords(x, y, r)
         return render_template('radius.html', result=result)
-
-@app.route('/array')
-def array_view():
-    names_of_cities = ["London", "Paris", "Copenhagen","blu"]
-    return render_template('city.html', names=names_of_cities)
 
 @app.route("/map")
 def mapview(la, lo):
