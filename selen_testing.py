@@ -111,7 +111,11 @@ class selen_testing(unittest.TestCase):
 
 	def testRadiusErrorHandling(self):
 		print("testing testRadiusErrorHandling")
-		self.elem = self.driver.find_element_by_name("radius")
+		self.elem = self.driver.find_element_by_name("x")
+		self.elem.clear()
+		self.elem = self.driver.find_element_by_name("y")
+		self.elem.clear()
+		self.elem = self.driver.find_element_by_name("r")
 		self.elem.clear()
 		self.driver.find_element_by_xpath("//input[@value='Find titles for coordinates']").click()
 		self.result = self.driver.find_element_by_class_name("error-msg").text
