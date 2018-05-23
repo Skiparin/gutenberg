@@ -35,7 +35,7 @@ def titles():
     city = request.form['city']
     if not city:
         flash('Please enter a city name')
-        return redirect(url_for('/', result=result))
+        return redirect(url_for('/'))
     else:
         result = get_titles_for_city(city)
         return render_template('titles.html', result=result)
@@ -105,8 +105,4 @@ def handle_invalid_usage(error):
 """
 
 if __name__ == "__main__":
-    app.secret_key = 'super secret key'
-    app.config['SESSION_TYPE'] = 'filesystem'
-
-    sess.init_app(app)
     app.run(debug=True)
