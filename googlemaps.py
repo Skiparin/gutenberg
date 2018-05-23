@@ -35,6 +35,7 @@ def titles():
     city = request.form['city']
     if not city:
         flash('Please enter a city name')
+        return redirect(url_for('/', result=result))
     else:
         result = get_titles_for_city(city)
         return render_template('titles.html', result=result)
