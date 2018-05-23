@@ -105,4 +105,5 @@ def handle_invalid_usage(error):
 """
 
 if __name__ == "__main__":
+    app.secret_key = 'some secret key'
     app.run(debug=True)
