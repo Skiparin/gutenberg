@@ -1,14 +1,17 @@
-<!DOCTYPE html>
-    <html>
+<!DOCTYPE html >
+<html>
     <head>
-            
+        <meta charset = "utf-8">
+        <link rel = "stylesheet" href = "{{ url_for('static', filename='styles.css') }}">            
     </head>
     <body>
-    <table style="width: 100%">
+    <table calss = "table-class">
+        <th class = "header">Titles</th>
+        <th class = "header">Authors</th>
     {% for x in result %}
         <tr>
-            <td>{{x[0]}}</td>
-            <td>{{x[1]}}</td>
+            <td class = "table-td">{{x[0]}}</td>
+            <td class = "table-td">{{x[1]}}</td>
         </tr>
     {% endfor %}
     </table>

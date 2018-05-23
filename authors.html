@@ -1,16 +1,20 @@
 <!DOCTYPE html>
-    <html>
+<html>
     <head>
-            {{mymap.js}}
+        <meta charset = "utf-8">
+        <link rel = "stylesheet" href = "{{ url_for('static', filename='styles.css') }}">            
+        {{mymap.js}}
     </head>
     {{mymap.html}}
     <body>
-    <table style="width: 100%">
-    {% for x in result %}
-        <tr>
-            <td>{{x}}</td>
-        </tr>
-    {% endfor %}
-    </table>
+        <br>
+        <table class = "table-class">
+                <th class = "header">Titles</th>
+            {% for x in result %}
+                <tr>
+                    <td class = "table-td">{{x}}</td>
+                </tr>
+            {% endfor %}
+        </table>
     </body>
 </html>

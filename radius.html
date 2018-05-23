@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-    <html>
+<html>
     <head>
-            
+        <meta charset = "utf-8">
+        <link rel = "stylesheet" href = "{{ url_for('static', filename='styles.css') }}">  
     </head>
     <body>
-    <table style="width: 100%">
+    <table class = "table-class">
+        <th class = "header">Titles</th>
     {% for x in result %}
         <tr>
-            <td>{{x}}</td>
+            <td class = "table-td">{{x}}</td>
         </tr>
     {% endfor %}
     </table>
