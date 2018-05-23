@@ -100,5 +100,23 @@ class selen_testing(unittest.TestCase):
 		self.expected = "Please enter a book title"
 		self.assertEqual(self.result, self.expected)
 
+	def testAuthorErrorHandling(self):
+		print("testing testAuthorErrorHandling")
+		self.elem = self.driver.find_element_by_name("author")
+		self.elem.clear()
+		self.driver.find_element_by_xpath("//input[@value='Plot titles and cities']").click()
+		self.result = self.driver.find_element_by_class_name("error-msg").text
+		self.expected = "Please enter an author name"
+		self.assertEqual(self.result, self.expected)
+
+	def testRadiusErrorHandling(self):
+		print("testing testRadiusErrorHandling")
+		self.elem = self.driver.find_element_by_name("radius")
+		self.elem.clear()
+		self.driver.find_element_by_xpath("//input[@value='Find titles for coordinates']").click()
+		self.result = self.driver.find_element_by_class_name("error-msg").text
+		self.expected = "Please enter x and y coordinates with a radius"
+		self.assertEqual(self.result, self.expected)
+
 if __name__ == '__main__':
     unittest.main()
