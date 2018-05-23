@@ -78,7 +78,7 @@ def get_title_for_cords(x,y,r):
         where circle'(("""+ x + "," + y + ")," + r + """)' @> point(x_cord,y_cord) and
         c.id = bc.city_id and
         bc.book_id = b.id;"""))
-    array = get_title_for_cords(result)
+    array = get_title_for_cords_to_array(result)
     return array
 
 def get_titles_for_city_to_array(result):
@@ -105,7 +105,7 @@ def get_titles_and_cords_for_author_to_dict(result):
     return r_dict
 
 
-def get_title_for_cords(result):
+def get_title_for_cords_to_array(result):
     array = []
     for r in result:
         print(r)
