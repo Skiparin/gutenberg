@@ -115,7 +115,7 @@ class selen_testing(unittest.TestCase):
 		self.elem = self.driver.find_element_by_name("city")
 		self.elem.clear()
 		self.driver.find_element_by_xpath("//input[@value='Find titles']").click()
-		self.result = self.driver.find_element_by_class_name("error-msg").text
+		self.result = self.driver.find_element_by_class_name("alert").text
 		self.expected = "Please enter a city name"
 		self.assertEqual(self.result, self.expected)
 
@@ -124,7 +124,7 @@ class selen_testing(unittest.TestCase):
 		self.elem = self.driver.find_element_by_name("title")
 		self.elem.clear()
 		self.driver.find_element_by_xpath("//input[@value='Plot cities']").click()
-		self.result = self.driver.find_element_by_class_name("error-msg").text
+		self.result = self.driver.find_element_by_class_name("alert").text
 		self.expected = "Please enter a book title"
 		self.assertEqual(self.result, self.expected)
 
@@ -133,7 +133,7 @@ class selen_testing(unittest.TestCase):
 		self.elem = self.driver.find_element_by_name("author")
 		self.elem.clear()
 		self.driver.find_element_by_xpath("//input[@value='Plot titles and cities']").click()
-		self.result = self.driver.find_element_by_class_name("error-msg").text
+		self.result = self.driver.find_element_by_class_name("alert").text
 		self.expected = "Please enter an author name"
 		self.assertEqual(self.result, self.expected)
 
@@ -146,7 +146,7 @@ class selen_testing(unittest.TestCase):
 		self.elem = self.driver.find_element_by_name("r")
 		self.elem.clear()
 		self.driver.find_element_by_xpath("//input[@value='Find titles for coordinates']").click()
-		self.result = self.driver.find_element_by_class_name("error-msg").text
+		self.result = self.driver.find_element_by_class_name("alert").text
 		self.expected = "Please enter x and y coordinates with a radius"
 		self.assertEqual(self.result, self.expected)
 
