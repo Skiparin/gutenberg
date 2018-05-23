@@ -8,7 +8,7 @@
             {%for message in get_flashed_messages()%}
             <div class = "alert alert-warning">
                   {{ message }}
-                  <button type = "button" class = "close" data-dismiss = "alert" value = "X"></button>
+                  <input type = "button" class = "close" data-dismiss = "alert" value = "X"></input>
             </div>
             {%endfor%}
             {%block page_content%}{%endblock%}
