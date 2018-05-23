@@ -19,17 +19,22 @@ def my_form_post():
     la = request.form['la']
     print (la+lo)
     return redirect(url_for('mapview',la = la, lo = lo))
+
 @app.route('/map',methods=['POST'])
 def map_post():
     title = request.form['title']
-    result = get_cities_for_title(title)
-    mymap = Map(
-        identifier="view-side",
-        lat=0,
-        lng=0,
-        markers=result
-    )
-    return render_template('example.html', mymap=mymap)
+    if not title:
+        flash('Please enter a book title')
+        return redirect(url_for('my_form'))
+    else:
+        result = get_cities_for_title(title)
+        mymap = Map(
+            identifier="view-side",
+            lat=0,
+            lng=0,
+            markers=result
+        )
+        return render_template('example.html', mymap=mymap)
 
 @app.route('/titles',methods=['POST'])
 def titles():
@@ -43,23 +48,31 @@ def titles():
 
 @app.route('/authors',methods=['POST'])
 def authors():
-    city = request.form['author']
-    result = get_titles_and_cords_for_author(city)
-    mymap = Map(
-        identifier="view-side",
-        lat=0,
-        lng=0,
-        markers=result["cords"]
-    )
-    return render_template('authors.html', mymap=mymap, result=result["titles"])
+    author = request.form['author']
+    if not author:
+        flash('Please enter an author name')
+        return redirect(url_for('my_form'))
+    else:
+        result = get_titles_and_cords_for_author(author)
+        mymap = Map(
+            identifier="view-side",
+            lat=0,
+            lng=0,
+            markers=result["cords"]
+        )
+        return render_template('authors.html', mymap=mymap, result=result["titles"])
 
 @app.route('/radius',methods=['POST'])
 def radius():
     x = request.form['x']
     y = request.form['y']
     r = request.form['r']
-    result = get_title_for_cords(x, y, r)
-    return render_template('radius.html', result=result)
+    if not x or not y or not r:
+        flash('Please enter x and y coordinates with a radius')
+        return redirect(url_for('my_form'))
+    else:
+        result = get_title_for_cords(x, y, r)
+        return render_template('radius.html', result=result)
 
 @app.route('/array')
 def array_view():
