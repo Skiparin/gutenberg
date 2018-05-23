@@ -3,6 +3,7 @@ from flask_googlemaps import GoogleMaps
 from flask_googlemaps import Map
 from database import database
 from psql_queries import get_cities_for_title, get_titles_for_city, get_titles_and_cords_for_author, get_title_for_cords
+from flask import jsonify
 from exceptions import InvalidUsage
 
 app = Flask(__name__, template_folder=".")
@@ -95,5 +96,11 @@ def mapview(la, lo):
     )
     return render_template('example.html', mymap=mymap, sndmap=sndmap)
 
+@app.errorhandler(InvalidUsage)
+def handle_invalid_usage(error):
+    response = jsonify(error.to_dict())
+    response.status_code = error.status_code
+    return response
+    
 if __name__ == "__main__":
     app.run(debug=True)
