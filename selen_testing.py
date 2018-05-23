@@ -82,13 +82,22 @@ class selen_testing(unittest.TestCase):
 		self.expected = "Wonderful Stories for Children"
 		self.assertEqual(self.result, self.expected)
 
-	def testErrorHandling(self):
-		print("testing testErrorHandling")
+	def testCityErrorHandling(self):
+		print("testing testCityErrorHandling")
 		self.elem = self.driver.find_element_by_name("city")
 		self.elem.clear()
 		self.driver.find_element_by_xpath("//input[@value='Find titles']").click()
-		self.result = self.driver.find_element_by_class_name("msg").text
+		self.result = self.driver.find_element_by_class_name("error-msg").text
 		self.expected = "Please enter a city name"
+		self.assertEqual(self.result, self.expected)
+
+	def testTitleErrorHandling(self):
+		print("testing testTitleErrorHandling")
+		self.elem = self.driver.find_element_by_name("title")
+		self.elem.clear()
+		self.driver.find_element_by_xpath("//input[@value='Plot cities']").click()
+		self.result = self.driver.find_element_by_class_name("error-msg").text
+		self.expected = "Please enter a book title"
 		self.assertEqual(self.result, self.expected)
 
 if __name__ == '__main__':
