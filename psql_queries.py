@@ -37,10 +37,7 @@ def get_titles_for_city(city):
         c.id = bc.city_id and
         bc.book_id = b.id
         group by b.title;"""), city_name=city)
-    array = []
-    for r in result:
-        temp_array = [r[0], r[1]]
-        array.append(temp_array)
+    array = get_titles_for_city_to_array(result)
     return array
 
 def get_cities_for_title(title):
@@ -52,9 +49,7 @@ def get_cities_for_title(title):
         where b.title = :title and
         b.id = bc.book_id and
         bc.city_id = c.id;"""), title=title)
-    array = []
-    for r in result:
-        array.append((float(r[0]),float(r[1])))
+    array = get_cities_for_title_to_array(result)
     return array
 
 def get_titles_and_cords_for_author(author):
@@ -70,13 +65,7 @@ def get_titles_and_cords_for_author(author):
         b.id = bc.book_id and
         bc.city_id = c.id
         group by b.title;"""), author=author)
-    r_dict = {}
-    r_dict["titles"] = []
-    r_dict["cords"] = []
-    for r in result:
-        r_dict["titles"].append(r[0])
-        for x,y in zip((r[1]),(r[2])):
-            r_dict["cords"].append((float(x),float(y)))
+    r_dict = get_titles_and_cords_for_author_to_dict(result)
     return r_dict
 
 
@@ -89,12 +78,36 @@ def get_title_for_cords(x,y,r):
         where circle'(("""+ x + "," + y + ")," + r + """)' @> point(x_cord,y_cord) and
         c.id = bc.city_id and
         bc.book_id = b.id;"""))
+    array = get_title_for_cords(result)
+    return array
+
+def get_titles_for_city_to_array(result):
+    array = []
+    for r in result:
+        temp_array = [r[0], r[1]]
+        array.append(temp_array)
+    return array
+
+def get_cities_for_title_to_array(result):
+    array = []
+    for r in result:
+        array.append((float(r[0]),float(r[1])))
+    return array
+
+def get_titles_and_cords_for_author_to_dict(result):
+    r_dict = {}
+    r_dict["titles"] = []
+    r_dict["cords"] = []
+    for r in result:
+        r_dict["titles"].append(r[0])
+        for x,y in zip((r[1]),(r[2])):
+            r_dict["cords"].append((float(x),float(y)))
+    return r_dict
+
+
+def get_title_for_cords(result):
     array = []
     for r in result:
         print(r)
         array.append(r[0])
     return array
-
-
-
-
