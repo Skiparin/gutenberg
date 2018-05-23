@@ -96,17 +96,17 @@ class selen_testing(unittest.TestCase):
 		self.driver.find_element_by_xpath("//input[@value='Find titles for coordinates']").click()
 
 		#Asserts book title from first table row
-		self.result = self.driver.find_element_by_class_xpath("//tbody/tr[2]/td").text
+		self.result = self.driver.find_element_by_xpath("//tbody/tr[2]/td").text
 		self.expected = "U.S. Copyright Renewals, 1956 January - June"
 		self.assertEqual(self.result, self.expected)
 
 		#Asserts book title from the 40th table row
-		self.result1 = self.driver.find_element_by_class_xpath("//tbody/tr[40]/td").text
+		self.result1 = self.driver.find_element_by_xpath("//tbody/tr[40]/td").text
 		self.expected1 = "Sweden"
 		self.assertEqual(self.result1, self.expected1)
 
 		#Asserts book title from last table row
-		self.result2 = self.driver.find_element_by_class_xpath("//tbody/tr[last()]/td").text
+		self.result2 = self.driver.find_element_by_xpath("//tbody/tr[last()]/td").text
 		self.expected2 = "The Story of the Great War, Volume II (of VIII) History of the European War from Official Sources"
 		self.assertEqual(self.result2, self.expected2)
 
