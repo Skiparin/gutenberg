@@ -87,7 +87,7 @@ class selen_testing(unittest.TestCase):
 		self.elem = self.driver.find_element_by_name("city")
 		self.elem.clear()
 		self.driver.find_element_by_xpath("//input[@value='Find titles']").click()
-		self.result = self.driver.find_element_by_class_name("alert").text
+		self.result = self.driver.find_element_by_class_name("error-msg").text
 		self.expected = "Please enter a city name"
 		self.assertEqual(self.result, self.expected)
 
