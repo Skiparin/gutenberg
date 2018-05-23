@@ -3,7 +3,7 @@ from flask_googlemaps import GoogleMaps
 from flask_googlemaps import Map
 from database import database
 from psql_queries import get_cities_for_title, get_titles_for_city, get_titles_and_cords_for_author, get_title_for_cords
-from exceptions.py import InvalidUsage
+from exceptions import InvalidUsage
 
 app = Flask(__name__, template_folder=".")
 GoogleMaps(app)
