@@ -6,6 +6,7 @@ from psql_queries import get_cities_for_title, get_titles_for_city, get_titles_a
 from flask import flash
 
 app = Flask(__name__, template_folder=".")
+app.secret_key = 'some secret key'
 GoogleMaps(app)
 
 @app.route('/')
@@ -105,5 +106,4 @@ def handle_invalid_usage(error):
 """
 
 if __name__ == "__main__":
-    app.secret_key = 'some secret key'
     app.run(debug=True)
