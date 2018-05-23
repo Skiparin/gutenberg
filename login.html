@@ -7,12 +7,6 @@
          <p>Enter a city: </p>
          <p><input type = "text" name = "city" placeholder = "ex. Odense" /></p> 
          <p><input type = "submit" value = "Find titles" /></p>
-         {% for message in messages %}
-            <div class="title-alert-success">
-               <a class="close" href="#" data-dismiss="alert">×</a>
-                  {{ message }}
-           </div>
-         {% endfor %}
       </form>
       <form method = "post" action="/map">
          <p>Enter a book title:</p>
