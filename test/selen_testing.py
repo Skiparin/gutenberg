@@ -72,9 +72,6 @@ class selen_testing(unittest.TestCase):
 		self.elem.send_keys("Denmark")
 		self.driver.find_element_by_xpath("//input[@value='Plot cities']").click()
 
-		result = self.driver.find_element_by_xpath("//div[@class='gmnoprint']").location
-		print(result)
-
 	def testPlotTitlesAndCities(self):
 		print("testing testPlotTitlesAndCities")
 		self.elem = self.driver.find_element_by_name("author")
