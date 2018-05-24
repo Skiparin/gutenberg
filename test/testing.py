@@ -66,11 +66,11 @@ class TestTest(unittest.TestCase):
     def test_get_titles_for_city(self):
         result = database.getTitlesForCity("Odense")
         self.assertEqual(result[0][0],"A Danish Parsonage")
-        self.assertEqual(result[1][0],"['John Fulford Vicary']")
+        self.assertEqual(result[0][1],"['John Fulford Vicary']")
 
         result = database.getTitlesForCity("London")
         self.assertEqual(result[0][0],"1000 Mythological Characters Briefly Described Adapted to Private Schools, High Schools and Academies")
-        self.assertEqual(result[1][0],"['Edward S. Ellis']")
+        self.assertEqual(result[0][1],"['Edward S. Ellis']")
 
     def test_get_cities_for_title(self):
         result = database.getCitiesForTitle("London")
