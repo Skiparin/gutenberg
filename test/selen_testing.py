@@ -62,7 +62,7 @@ class selen_testing(unittest.TestCase):
 		self.expected5 = "['Hans Christian Andersen']"
 		self.assertEqual(self.result5, self.expected5)
 
-	
+	"""
 	def testPlotCities(self):
 		print("testing testPlotCities")
 		self.elem = self.driver.find_element_by_name("title")
@@ -70,9 +70,9 @@ class selen_testing(unittest.TestCase):
 		self.elem.send_keys("Denmark")
 		self.driver.find_element_by_xpath("//input[@value='Plot cities']").click()
 
-		result = self.driver.find_element_by_xpath("//html/body/div[@id='view-side']/div/div[@class='gm-style']/div/div/div/div/div[@class='gmnoprint']").location
+		result = self.driver.find_element_by_xpath("//div[@class='gmnoprint']").location
 		print(result)
-	
+	"""
 
 	def testPlotTitlesAndCities(self):
 		print("testing testPlotTitlesAndCities")
