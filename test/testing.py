@@ -84,7 +84,7 @@ class TestTest(unittest.TestCase):
     def test_get_titles_for_cords(self):
         result = database.getTitleForCords(str(25),str(50),str(0.5))
         self.assertEqual(result[0],"Southern Arabia")
-        self.assertEqual(result[5],"The Book of the Thousand Nights and a Night, Volume 1")
+        self.assertEqual(result[-1],"The Book of the Thousand Nights and a Night, Volume 1")
 
 if __name__ == '__main__':
     unittest.main()
