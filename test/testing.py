@@ -59,7 +59,7 @@ class database():
 
 class TestTest(unittest.TestCase):
 
-    @patch('Testing.funny.getVariable',return_value=3)
+    @patch('testing.funny.getVariable',return_value=3)
     def test_mock(self,getVariable):
         self.assertEqual(getVariable(), 3)
 
@@ -78,7 +78,7 @@ class TestTest(unittest.TestCase):
 
     def test_get_cities_for_title(self):
         result = database.getCitiesForTitle("London")
-        self.assertEqual(float(result[0]),42.98339)
+        self.assertEqual(float(result[0]),-34.05515)
         self.assertEqual(float(result[1]),-81.23304)
 
     def test_get_titles_for_cords(self):
