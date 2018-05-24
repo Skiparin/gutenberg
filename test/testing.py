@@ -5,11 +5,11 @@ from sqlalchemy.orm import sessionmaker
 import unittest
 import os, sys
 from unittest.mock import patch
+
 parentPath = os.path.abspath("gutenberg")
 if parentPath not in sys.path:
     sys.path.insert(0, parentPath)
 from psql_queries import *
-#import solr_query
 
 
 class funny():
@@ -19,11 +19,10 @@ class funny():
 	def getVariable():
 		return a
 
-
+"""
+Connect to database where we'll save properties.
+"""
 def db_connect():
-    """
-    Connect to database where we'll save properties.
-    """
     return create_engine(URL(**{
     'drivername': 'postgres',
     'host': 'localhost',
@@ -34,7 +33,6 @@ def db_connect():
 }))
 
 class database():
-
     def getTitlesForCity(city):
         result = get_titles_for_city(city)
         for title, author in result:
@@ -71,33 +69,26 @@ class TestTest(unittest.TestCase):
 
     def test_get_titles_for_city(self):
         result = database.getTitlesForCity("Odense")
-        self.assertEqual(result[0],"The 2000 CIA World Factbook\n")
+        self.assertEqual(result[0],"A Danish Parsonage")
+        self.assertEqual(result[1],"['John Fulford Vicary']")
+
+        result = database.getTitlesForCity("London")
+        self.assertEqual(result[0],"1000 Mythological Characters Briefly Described Adapted to Private Schools, High Schools and Academies")
+        self.assertEqual(result[1],"['Edward S. Ellis']")
 
     def test_get_cities_for_title(self):
-        result = database.getCitiesForTitle("Denmark")
-
-    def test_CityCord(self):
-        result = database.getCityCord("London")
+        result = database.getCitiesForTitle("London")
         self.assertEqual(float(result[0]),42.98339)
         self.assertEqual(float(result[1]),-81.23304)
 
-
-    def test_AuthorTitle(self):
-        result = database.getTitleAuthor()
-        self.assertEqual(result[0],"Alaska Days with John Muir\n")
+    def test_get_titles_for_cords(self):
+        result = getTitleForCords(25,50,0.5)
+        self.assertEqual(result[0],"Southern Arabia")
+        self.assertEqual(result[5],"The Book of the Thousand Nights and a Night, Volume 1")
 
     def testMetode(self):
         result = conn.execute(text("SELECT 1"))
         print(result)
-
-    """
-    def test_solr(self):
-        result = solr_query.city_name("Denmark")
-        self.assertEqual(result[0][0], "A New Voyage Round the World in the Years 1823, 24, 25, and 26. Vol. 1")
-        self.assertEqual(result[1][0], "Otto von Kotzebue")
-    """
-
-
 
 if __name__ == '__main__':
     unittest.main()
