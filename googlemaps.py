@@ -27,7 +27,8 @@ def map_post():
             identifier="view-side",
             lat=0,
             lng=0,
-            markers=result
+            markers=result,
+            optimized=false
         )
         return render_template('html/map.html', mymap=mymap)
 
