@@ -87,37 +87,3 @@ def radius():
 
     else:
         return render_template('html/radius.html', result=result)
-
-@app.route("/map")
-def mapview(la, lo):
-    # creating a map in the view
-    mymap = Map(
-        identifier="view-side",
-        lat=float(la),
-        lng=float(lo),
-        markers=[(la, lo),(float(la)-1,float(lo)-1)]
-    )
-    sndmap = Map(
-        identifier="sndmap",
-        lat=la,
-        lng=lo,
-        fit_markers_to_bounds = True,
-        markers=[
-          {
-             'icon': 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
-             'lat': la,
-             'lng': lo,
-             'infobox': "<b>Hello World</b>"
-          },
-          {
-             'icon': 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
-             'lat': 42.98339,
-             'lng': -81.23306,
-             'infobox': "<b>Hello World from other place</b>"
-          }
-        ]
-    )
-    return render_template('html/example.html', mymap=mymap, sndmap=sndmap)
-
-if __name__ == "__main__":
-    app.run(debug=True)
