@@ -6,7 +6,7 @@ import unittest
 import os, sys
 from unittest.mock import patch
 
-parentPath = os.path.abspath("gutenberg")
+parentPath = os.path.abspath("..")
 if parentPath not in sys.path:
     sys.path.insert(0, parentPath)
 from psql_queries import *
