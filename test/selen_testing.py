@@ -8,7 +8,6 @@ class selen_testing(unittest.TestCase):
 
 	@classmethod
 	def setUpClass(cls):
-		print("Setting up driver")
 		options = Options()
 		options.add_argument("--headless")
 
@@ -18,9 +17,8 @@ class selen_testing(unittest.TestCase):
 	def tearDown(self):
 		self.driver.get("http://46.101.61.244:5000/")
 
-	def tearDownClass(selen_testing):
-		print("Closing driver")
-		selen_testing.driver.close()
+	def tearDownClass(cls):
+		cls.driver.close()
 
 	"""
 	def testFindCity(self):
