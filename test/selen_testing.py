@@ -169,7 +169,7 @@ class selen_testing(unittest.TestCase):
 		self.elem = self.driver.find_element_by_name("title")
 		self.elem.clear()
 		self.elem.send_keys("This is not a city")
-		self.driver.find_element_by_xpath("//input[@value='Find titles']").click()
+		self.driver.find_element_by_xpath("//input[@value='Plot cities']").click()
 		self.result = self.driver.find_element_by_class_name("alert").text
 		self.expected = "Can't find a book title with that name"
 		self.assertEqual(self.result, self.expected)
@@ -180,7 +180,7 @@ class selen_testing(unittest.TestCase):
 		self.elem = self.driver.find_element_by_name("title")
 		self.elem.clear()
 		self.elem.send_keys("123456789!#%&/()=")
-		self.driver.find_element_by_xpath("//input[@value='Find titles']").click()
+		self.driver.find_element_by_xpath("//input[@value='Plot cities']").click()
 		self.result = self.driver.find_element_by_class_name("alert").text
 		self.expected = "Can't find a book title with that name"
 		self.assertEqual(self.result, self.expected)
