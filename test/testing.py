@@ -49,7 +49,7 @@ class database():
         result = get_title_for_cords(x,y,r)
         return result
 
-class TestTest(unittest.TestCase):
+class application_tests(unittest.TestCase):
 
     @patch('testing.funny.getVariable',return_value=3)
     def test_mock(self,getVariable):
