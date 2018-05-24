@@ -70,12 +70,8 @@ class selen_testing(unittest.TestCase):
 		self.elem.clear()
 		self.elem.send_keys("Denmark")
 		self.driver.find_element_by_xpath("//input[@value='Plot cities']").click()
-
-		try:
-		    result = WebDriverWait(self.driver, 15).until(self.driver.find_element_by_xpath('//div[@style="position"]'))
-		    print(result)
-		except TimeoutException:
-		    print("Loading took too much time!")
+		result = self.driver.find_element_by_xpath('//div')
+		print(result)
 
 	"""
 	def testPlotTitlesAndCities(self):
