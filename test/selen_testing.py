@@ -25,7 +25,6 @@ class selen_testing(unittest.TestCase):
 	def tearDownClass(cls):
 		cls.driver.close()
 
-	"""
 	def testFindCity(self):
 		print("testing testFindCity")
 		self.elem = self.driver.find_element_by_name("city")
@@ -62,8 +61,8 @@ class selen_testing(unittest.TestCase):
 		self.result5 = self.driver.find_element_by_xpath('//tbody/tr[last()]/td[2]').text
 		self.expected5 = "['Hans Christian Andersen']"
 		self.assertEqual(self.result5, self.expected5)
-	"""
 
+	
 	def testPlotCities(self):
 		print("testing testPlotCities")
 		self.elem = self.driver.find_element_by_name("title")
@@ -71,10 +70,10 @@ class selen_testing(unittest.TestCase):
 		self.elem.send_keys("Denmark")
 		self.driver.find_element_by_xpath("//input[@value='Plot cities']").click()
 
-		result = self.driver.find_element_by_class_name("gmnoprint").location
+		result = self.driver.find_element_by_xpath("//html/body/div[@id='view-side']/div/div[@class='gm-style']/div/div/div/div/div[@class='gmnoprint']").location
 		print(result)
+	
 
-	"""
 	def testPlotTitlesAndCities(self):
 		print("testing testPlotTitlesAndCities")
 		self.elem = self.driver.find_element_by_name("author")
@@ -159,7 +158,6 @@ class selen_testing(unittest.TestCase):
 		self.result = self.driver.find_element_by_class_name("alert").text
 		self.expected = "Please enter x and y coordinates with a radius"
 		self.assertEqual(self.result, self.expected)
-	"""
 
 if __name__ == '__main__':
     unittest.main()
