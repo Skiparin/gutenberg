@@ -91,11 +91,8 @@ for i in cord_array:
 	get_title_for_cords(str(i[0]),str(i[1]),str(i[2]))
 	end = time.time()
 	sample_time = end - start
-<<<<<<< HEAD
 	print("\t" + str(sample_time))
-=======
 	time += sample_time
 
 print(time/10)
 time = 0
->>>>>>> e50a667d32a2f4c4aba23709a24b71720ae752c0
