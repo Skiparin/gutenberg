@@ -40,7 +40,9 @@ class database():
 
     def getTitlesAndCordsForAuthor(author):
         result = get_title_and_cords_for_author(author)
-        return result
+        for title,xcord,y_cord in result:
+            a = [title,xcord,ycord]
+            return a
 
     def getTitleForCords(x,y,r):
         result = get_title_for_cords(x,y,r)
