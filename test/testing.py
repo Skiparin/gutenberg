@@ -79,10 +79,10 @@ class TestTest(unittest.TestCase):
     def test_get_cities_for_title(self):
         result = database.getCitiesForTitle("London")
         self.assertEqual(float(result[0]),-34.05515)
-        self.assertEqual(float(result[1]),-81.23304)
+        self.assertEqual(float(result[1]),18.47617)
 
     def test_get_titles_for_cords(self):
-        result = database.getTitleForCords(25,50,0.5)
+        result = database.getTitleForCords(str(25),str(50),str(0.5))
         self.assertEqual(result[0],"Southern Arabia")
         self.assertEqual(result[5],"The Book of the Thousand Nights and a Night, Volume 1")
 
