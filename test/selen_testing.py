@@ -144,7 +144,7 @@ class selen_testing(unittest.TestCase):
 		self.assertEqual(self.result, self.expected)
 
 	#Asserts a message response when we cant find a book mentioning the given city name
-	def testCityInvalidInput1(self):
+	def testCityInvalidInput2(self):
 		print("testing testInvalidInput2")
 		self.elem = self.driver.find_element_by_name("city")
 		self.elem.clear()
