@@ -9,7 +9,7 @@ from unittest.mock import patch
 parentPath = os.path.abspath("..")
 if parentPath not in sys.path:
     sys.path.insert(0, parentPath)
-from psql_queries import *
+from psql_queries import get_cities_for_title, get_titles_for_city, get_titles_and_cords_for_author, get_title_for_cords
 
 
 class funny():
@@ -82,13 +82,9 @@ class TestTest(unittest.TestCase):
         self.assertEqual(float(result[1]),-81.23304)
 
     def test_get_titles_for_cords(self):
-        result = getTitleForCords(25,50,0.5)
+        result = database.getTitleForCords(25,50,0.5)
         self.assertEqual(result[0],"Southern Arabia")
         self.assertEqual(result[5],"The Book of the Thousand Nights and a Night, Volume 1")
-
-    def testMetode(self):
-        result = conn.execute(text("SELECT 1"))
-        print(result)
 
 if __name__ == '__main__':
     unittest.main()
