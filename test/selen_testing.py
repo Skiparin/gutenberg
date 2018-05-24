@@ -69,8 +69,9 @@ class selen_testing(unittest.TestCase):
 		self.elem = self.driver.find_element_by_name("title")
 		self.elem.clear()
 		self.elem.send_keys("Denmark")
-		self.driver.find_elements_by_xpath("//input[@value='Plot cities']").click()
-		result = self.driver.find_element_by_xpath('//div')
+		self.driver.find_element_by_xpath("//input[@value='Plot cities']").click()
+
+		result = self.driver.find_elements_by_xpath('//div')
 		print(result)
 
 	"""
