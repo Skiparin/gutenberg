@@ -71,7 +71,7 @@ class selen_testing(unittest.TestCase):
 		self.elem.send_keys("Denmark")
 		self.driver.find_element_by_xpath("//input[@value='Plot cities']").click()
 
-		result = self.driver.find_element_by_xpath('//div[@id="view-side"]//div[@class="gm-style"]')
+		result = self.driver.find_element_by_class_name('gmnoprint')
 		print(result)
 
 	"""
