@@ -7,11 +7,11 @@ import unittest
 class selen_testing(unittest.TestCase):
 
 	@classmethod
-	def setUpClass(cls, self):
-		cls.options = Options()
-		cls.options.add_argument("--headless")
+	def setUpClass(cls):
+		#cls.options = Options()
+		#cls.options.add_argument("--headless")
 
-		cls.driver = webdriver.Firefox(options=self.options, executable_path="geckodriver")
+		cls.driver = webdriver.Firefox(options=options.add_argument("--headless"), executable_path="geckodriver")
 		cls.driver.get("http://46.101.61.244:5000/")
 
 	def tearDown(self):
