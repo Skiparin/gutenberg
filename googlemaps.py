@@ -66,11 +66,14 @@ def radius():
     x = request.form['x']
     y = request.form['y']
     r = request.form['r']
+    result = get_title_for_cords(x, y, r)
     if not x or not y or not r:
         flash('Please enter x and y coordinates with a radius')
         return redirect(url_for('my_form'))
+    elif not result:
+        flash("No titles were found in this area")
+        return redirect(url_for('my_form'))
     else:
-        result = get_title_for_cords(x, y, r)
         return render_template('html/radius.html', result=result)
 
 @app.route("/map")
