@@ -9,15 +9,8 @@ app.secret_key = 'some secret key'
 GoogleMaps(app)
 
 @app.route('/')
-def my_form():
+def index():
     return render_template('html/index.html')
-
-@app.route('/', methods=['POST'])
-def my_form_post():
-    lo = request.form['lo']
-    la = request.form['la']
-    print (la+lo)
-    return redirect(url_for('mapview',la = la, lo = lo))
 
 @app.route('/map',methods=['POST'])
 def map_post():
@@ -25,10 +18,10 @@ def map_post():
     result = get_cities_for_title(title)
     if not title:
         flash('Please enter a book title')
-        return redirect(url_for('my_form'))
+        return redirect(url_for('index'))
     elif not result:
         flash("Can't find a book title with that name")
-        return redirect(url_for('my_form'))
+        return redirect(url_for('index'))
     else:
         mymap = Map(
             identifier="view-side",
@@ -44,10 +37,10 @@ def titles():
     result = get_titles_for_city(city)
     if not city:
         flash('Please enter a city name')
-        return redirect(url_for('my_form'))
+        return redirect(url_for('index'))
     elif not result:
         flash("Can't find a city with that name")
-        return redirect(url_for('my_form'))
+        return redirect(url_for('index'))
     else:
         return render_template('html/titles.html', result=result)
 
@@ -57,10 +50,10 @@ def authors():
     result = get_titles_and_cords_for_author(author)
     if not author:
         flash('Please enter an author name')
-        return redirect(url_for('my_form'))
+        return redirect(url_for('index'))
     elif not result:
         flash("Can't find an author with that name")
-        return redirect(url_for('my_form'))
+        return redirect(url_for('index'))
     else:
         mymap = Map(
             identifier="view-side",
@@ -78,10 +71,10 @@ def radius():
     result = get_title_for_cords(x, y, r)
     if not x or not y or not r:
         flash('Please enter x and y coordinates with a radius')
-        return redirect(url_for('my_form'))
+        return redirect(url_for('index'))
     elif not result:
         flash("No titles were found in this area")
-        return redirect(url_for('my_form'))
+        return redirect(url_for('index'))
     else:
         return render_template('html/radius.html', result=result)
 
