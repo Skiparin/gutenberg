@@ -74,8 +74,6 @@ class TestTest(unittest.TestCase):
         self.assertEqual(result[0][0],"1000 Mythological Characters Briefly Described Adapted to Private Schools, High Schools and Academies")
         self.assertEqual(result[0][1],['Edward S. Ellis'])
 
-        print("last title and author ----> " + result[-1][0] + ", " + result[-1][1])
-
     def test_get_cities_for_title(self):
         print("testing test_get_cities_for_title")
         result = database.getCitiesForTitle("London")
