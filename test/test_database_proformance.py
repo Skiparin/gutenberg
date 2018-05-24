@@ -53,6 +53,7 @@ cord_array = [
 [9,9,9],
 [10,10,10],
 ]
+time = 0
 
 print("get_cities_for_title")
 for i in title_array:
@@ -60,28 +61,41 @@ for i in title_array:
 	get_cities_for_title(i)
 	end = time.time()
 	sample_time = end - start
-	print("\t" + str(sample_time))
-
+	time += sample_time
+	
+print(time/10)
+time = 0
 print("get_titles_for_city")
 for i in city_array:
 	start = time.time()
 	get_titles_for_city(i)
 	end = time.time()
 	sample_time = end - start
-	print("\t" + str(sample_time))
-
+	time += sample_time
+	
+print(time/10)
+time = 0
 print("get_titles_and_cords_for_author")
 for i in authors_array:
 	start = time.time()
 	get_titles_and_cords_for_author(i)
 	end = time.time()
 	sample_time = end - start
-	print("\t" + str(sample_time))
-
+	time += sample_time
+	
+print(time/10)
+time = 0
 print("get_title_for_cords")
 for i in cord_array:
 	start = time.time()
-	get_title_for_cords(i[0],i[1],i[2])
+	get_title_for_cords(str(i[0]),str(i[1]),str(i[2]))
 	end = time.time()
 	sample_time = end - start
+<<<<<<< HEAD
 	print("\t" + str(sample_time))
+=======
+	time += sample_time
+
+print(time/10)
+time = 0
+>>>>>>> e50a667d32a2f4c4aba23709a24b71720ae752c0
