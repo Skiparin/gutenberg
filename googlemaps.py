@@ -74,7 +74,7 @@ def radius():
         return redirect(url_for('index'))
     try:
         if float(r) > 1:
-            flash('Please enter enter a smaller radius')
+            flash('Please enter enter a radius at 1 or less')
             return redirect(url_for('index'))
         result = get_title_for_cords(x, y, r)
     except:
