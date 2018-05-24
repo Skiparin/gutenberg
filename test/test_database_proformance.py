@@ -11,7 +11,7 @@ for i in range(10):
 	get_cities_for_title("Denmark")
 	end = time.time()
 	time = end - start
-	print("\t" + time)
+	print("\t" + float(time))
 
 print("get_titles_for_city")
 for i in range(10):
@@ -19,7 +19,7 @@ for i in range(10):
 	get_titles_for_city("Odense")
 	end = time.time()
 	time = end - start
-	print("\t" + time)
+	print("\t" + float(time))
 
 print("get_titles_and_cords_for_author")
 for i in range(10):
@@ -27,7 +27,7 @@ for i in range(10):
 	get_titles_and_cords_for_author("Hans Christian Andersen")
 	end = time.time()
 	time = end - start
-	print("\t" + time)
+	print("\t" + float(time))
 
 print("get_title_for_cords")
 for i in range(10):
@@ -35,4 +35,4 @@ for i in range(10):
 	get_title_for_cords(str(1),str(1),str(1))
 	end = time.time()
 	time = end - start
-	print("\t" + time)
+	print("\t" + float(time))
