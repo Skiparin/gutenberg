@@ -72,6 +72,9 @@ def radius():
     if not x or not y or not r:
         flash('Please enter x and y coordinates with a radius')
         return redirect(url_for('index'))
+    if r > 5
+        flash('Please enter enter a smaller radius')
+        return redirect(url_for('index'))
     try:
         result = get_title_for_cords(x, y, r)
     except:
