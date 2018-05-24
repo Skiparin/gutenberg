@@ -74,6 +74,7 @@ class TestTest(unittest.TestCase):
         #self.assertEqual(result[1][0], "The Comic History Of England")
         #self.assertEqual(result[1][1], "Gilbert Abbott A'Beckett")
         result = database.getTitleAuthorByCity("Odense")
+        print(result[0])
         self.assertEqual(result[0],"The 2000 CIA World Factbook\n")
     def test_AuthorTitle(self):
         result = database.getTitleAuthor()
