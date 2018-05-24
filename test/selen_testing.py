@@ -174,7 +174,7 @@ class selen_testing(unittest.TestCase):
 		self.expected = "Can't find a book title with that name"
 		self.assertEqual(self.result, self.expected)
 
-		#Asserts a message response when we cant find the cities mentioned in that book title
+	#Asserts a message response when we cant find the cities mentioned in that book title
 	def testTitleInvalidInput2(self):
 		print("testing testTitleInvalidInput2")
 		self.elem = self.driver.find_element_by_name("title")
@@ -194,6 +194,28 @@ class selen_testing(unittest.TestCase):
 		self.expected = "Please enter an author name"
 		self.assertEqual(self.result, self.expected)
 
+	#Asserts a message response when we cant find anu titles with the given author name
+	def testAuthorInvalidInput1(self):
+		print("testing testAuthorInvalidInput1")
+		self.elem = self.driver.find_element_by_name("author")
+		self.elem.clear()
+		self.elem.send_keys("This is not an author")
+		self.driver.find_element_by_xpath("//input[@value='Plot titles and cities']").click()
+		self.result = self.driver.find_element_by_class_name("alert").text
+		self.expected = "Can't find an author with that name"
+		self.assertEqual(self.result, self.expected)
+
+	#Asserts a message response when we cant find anu titles with the given author name
+	def testAuthorInvalidInput2(self):
+		print("testing testAuthorInvalidInput2")
+		self.elem = self.driver.find_element_by_name("author")
+		self.elem.clear()
+		self.elem.send_keys("123456789!#%&/()=")
+		self.driver.find_element_by_xpath("//input[@value='Plot titles and cities']").click()
+		self.result = self.driver.find_element_by_class_name("alert").text
+		self.expected = "Can't find an author with that name"
+		self.assertEqual(self.result, self.expected)
+
 	def testRadiusEmptyInput(self):
 		print("testing testRadiusEmptyInput")
 		self.elem = self.driver.find_element_by_name("x")
@@ -205,6 +227,54 @@ class selen_testing(unittest.TestCase):
 		self.driver.find_element_by_xpath("//input[@value='Find titles for coordinates']").click()
 		self.result = self.driver.find_element_by_class_name("alert").text
 		self.expected = "Please enter x and y coordinates with a radius"
+		self.assertEqual(self.result, self.expected)
+
+	def testRadiusInvalidInput1(self):
+		print("testing testRadiusInvalidInput1")
+		self.elem = self.driver.find_element_by_name("x")
+		self.elem.clear()
+		self.elem.send_keys("20")
+		self.elem = self.driver.find_element_by_name("y")
+		self.elem.clear()
+		self.elem.send_keys("125")
+		self.elem = self.driver.find_element_by_name("r")
+		self.elem.clear()
+		self.elem.send_keys("0.5")
+		self.driver.find_element_by_xpath("//input[@value='Find titles for coordinates']").click()
+		self.result = self.driver.find_element_by_class_name("alert").text
+		self.expected = "No titles were found in this area"
+		self.assertEqual(self.result, self.expected)
+
+	def testRadiusInvalidInput2(self):
+		print("testing testRadiusInvalidInput2")
+		self.elem = self.driver.find_element_by_name("x")
+		self.elem.clear()
+		self.elem.send_keys("#!%!&")
+		self.elem = self.driver.find_element_by_name("y")
+		self.elem.clear()
+		self.elem.send_keys("%")
+		self.elem = self.driver.find_element_by_name("r")
+		self.elem.clear()
+		self.elem.send_keys("0.5")
+		self.driver.find_element_by_xpath("//input[@value='Find titles for coordinates']").click()
+		self.result = self.driver.find_element_by_class_name("alert").text
+		self.expected = "Please enter valid numbers"
+		self.assertEqual(self.result, self.expected)
+
+	def testRadiusInvalidInput3(self):
+		print("testing testRadiusInvalidInput3")
+		self.elem = self.driver.find_element_by_name("x")
+		self.elem.clear()
+		self.elem.send_keys("50")
+		self.elem = self.driver.find_element_by_name("y")
+		self.elem.clear()
+		self.elem.send_keys("2")
+		self.elem = self.driver.find_element_by_name("r")
+		self.elem.clear()
+		self.elem.send_keys("3")
+		self.driver.find_element_by_xpath("//input[@value='Find titles for coordinates']").click()
+		self.result = self.driver.find_element_by_class_name("alert").text
+		self.expected = "Please enter enter a radius at 1 or less"
 		self.assertEqual(self.result, self.expected)
 
 if __name__ == '__main__':
