@@ -10,6 +10,7 @@ import unittest
 
 class selen_testing(unittest.TestCase):
 
+	#Settin up the driver in headless mode
 	@classmethod
 	def setUpClass(cls):
 		options = Options()
@@ -18,9 +19,11 @@ class selen_testing(unittest.TestCase):
 		cls.driver = webdriver.Firefox(options=options, executable_path="geckodriver")
 		cls.driver.get("http://46.101.61.244:5000/")
 
+	#This returns us to the start page every time a test finished.
 	def tearDown(self):
 		self.driver.get("http://46.101.61.244:5000/")
 
+	#Closing the driver when we are finnished testing.
 	@classmethod
 	def tearDownClass(cls):
 		cls.driver.close()
@@ -119,8 +122,8 @@ class selen_testing(unittest.TestCase):
 		self.expected2 = "The Story of the Great War, Volume II (of VIII) History of the European War from Official Sources"
 		self.assertEqual(self.result2, self.expected2)
 
-	def testCityErrorHandling(self):
-		print("testing testCityErrorHandling")
+	def testCityEmptyInput(self):
+		print("testing testCityEmptyInput")
 		self.elem = self.driver.find_element_by_name("city")
 		self.elem.clear()
 		self.driver.find_element_by_xpath("//input[@value='Find titles']").click()
@@ -128,8 +131,18 @@ class selen_testing(unittest.TestCase):
 		self.expected = "Please enter a city name"
 		self.assertEqual(self.result, self.expected)
 
-	def testTitleErrorHandling(self):
-		print("testing testTitleErrorHandling")
+	def testCityNotFound(self):
+		print("testing testCityNotFound")
+		self.elem = self.driver.find_element_by_name("city")
+		self.elem.clear()
+		self.elem.send_keys("This is not a title")
+		self.driver.find_element_by_xpath("//input[@value='Find titles']").click()
+		self.result = self.driver.find_element_by_class_name("alert").text
+		self.expected = "Can't find titles mentioning that city"
+		self.assertEqual(self.result, self.expected)
+
+	def testTitleEmptyInput(self):
+		print("testing testTitleEmptyInput")
 		self.elem = self.driver.find_element_by_name("title")
 		self.elem.clear()
 		self.driver.find_element_by_xpath("//input[@value='Plot cities']").click()
@@ -137,8 +150,8 @@ class selen_testing(unittest.TestCase):
 		self.expected = "Please enter a book title"
 		self.assertEqual(self.result, self.expected)
 
-	def testAuthorErrorHandling(self):
-		print("testing testAuthorErrorHandling")
+	def testAuthorEmptyInput(self):
+		print("testing testAuthorEmptyInput")
 		self.elem = self.driver.find_element_by_name("author")
 		self.elem.clear()
 		self.driver.find_element_by_xpath("//input[@value='Plot titles and cities']").click()
@@ -146,8 +159,8 @@ class selen_testing(unittest.TestCase):
 		self.expected = "Please enter an author name"
 		self.assertEqual(self.result, self.expected)
 
-	def testRadiusErrorHandling(self):
-		print("testing testRadiusErrorHandling")
+	def testRadiusEmptyInput(self):
+		print("testing testRadiusEmptyInput")
 		self.elem = self.driver.find_element_by_name("x")
 		self.elem.clear()
 		self.elem = self.driver.find_element_by_name("y")

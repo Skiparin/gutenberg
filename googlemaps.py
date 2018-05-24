@@ -40,7 +40,7 @@ def titles():
         flash('Please enter a city name')
         return redirect(url_for('index'))
     elif not result:
-        flash("Can't find a city with that name")
+        flash("Can't find titles mentioning that city")
         return redirect(url_for('index'))
     else:
         return render_template('html/titles.html', result=result)
