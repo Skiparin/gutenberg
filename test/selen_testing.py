@@ -68,7 +68,7 @@ class selen_testing(unittest.TestCase):
 		self.driver.find_element_by_xpath("//input[@value='Plot cities']").click()
 
 		self.result = self.driver.find_elements_by_xpath('//div[@class="gmnoprint" and @title]')
-		print(self.result)
+		print(self.result[0])
 
 	"""
 	def testPlotTitlesAndCities(self):
