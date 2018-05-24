@@ -108,6 +108,5 @@ def get_titles_and_cords_for_author_to_dict(result):
 def get_title_for_cords_to_array(result):
     array = []
     for r in result:
-        print(r)
         array.append(r[0])
     return array
