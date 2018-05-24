@@ -67,7 +67,7 @@ def radius():
     x = request.form['x']
     y = request.form['y']
     r = request.form['r']
-    if (not x or not y or not r):
+    if not x or not y or not r:
         flash('Please enter x and y coordinates with a radius')
         return redirect(url_for('my_form'))
     else:
@@ -104,14 +104,6 @@ def mapview(la, lo):
         ]
     )
     return render_template('example.html', mymap=mymap, sndmap=sndmap)
-
-"""
-@app.errorhandler(InvalidUsage)
-def handle_invalid_usage(error):
-    response = jsonify(error.to_dict())
-    response.status_code = error.status_code
-    return response
-"""
 
 if __name__ == "__main__":
     app.run(debug=True)

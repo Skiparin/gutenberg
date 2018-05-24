@@ -46,7 +46,7 @@ class database():
     def getTitleAuthorByCity(city_name):
         engine = db_connect()
         conn = engine.connect()
-        result = conn.execute(text("select title,author from books b, book_vectors v where v.vector @@ to_tsquery(:city) and b.id = v.id"), city=city_name)
+        result = conn.execute(text("select title,author from books b where b.vector @@ to_tsquery(:city) and b.id = v.id"), city=city_name)
         for title,author in result:
             a = [title,author]
         return a
@@ -74,7 +74,6 @@ class TestTest(unittest.TestCase):
         #self.assertEqual(result[1][0], "The Comic History Of England")
         #self.assertEqual(result[1][1], "Gilbert Abbott A'Beckett")
         result = database.getTitleAuthorByCity("Odense")
-        print(result[0])
         self.assertEqual(result[0],"The 2000 CIA World Factbook\n")
     def test_AuthorTitle(self):
         result = database.getTitleAuthor()
