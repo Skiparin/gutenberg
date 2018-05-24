@@ -25,6 +25,9 @@ def map_post():
     if not title:
         flash('Please enter a book title')
         return redirect(url_for('my_form'))
+    elif not result:
+        flash("Can't find a book title with that name")
+        return redirect(url_for('my_form'))
     else:
         result = get_cities_for_title(title)
         mymap = Map(
@@ -41,6 +44,9 @@ def titles():
     if not city:
         flash('Please enter a city name')
         return redirect(url_for('my_form'))
+    elif not result:
+        flash("Can't find a city with that name")
+        return redirect(url_for('my_form'))
     else:
         result = get_titles_for_city(city)
         return render_template('html/titles.html', result=result)
@@ -50,6 +56,9 @@ def authors():
     author = request.form['author']
     if not author:
         flash('Please enter an author name')
+        return redirect(url_for('my_form'))
+    elif not result:
+        flash("Can't find an author with that name")
         return redirect(url_for('my_form'))
     else:
         result = get_titles_and_cords_for_author(author)
