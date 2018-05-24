@@ -6,6 +6,7 @@ import unittest
 
 class selen_testing(unittest.TestCase):
 
+	@classmethod
 	def setUpClass(cls):
 		cls.options = Options()
 		cls.options.add_argument("--headless")
