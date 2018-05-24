@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_googlemaps import GoogleMaps
 from flask_googlemaps import Map
-from database import database
 from psql_queries import get_cities_for_title, get_titles_for_city, get_titles_and_cords_for_author, get_title_for_cords
 from flask import flash
 
@@ -11,7 +10,7 @@ GoogleMaps(app)
 
 @app.route('/')
 def my_form():
-    return render_template('login.html')
+    return render_template('html/login.html')
 
 @app.route('/', methods=['POST'])
 def my_form_post():
@@ -34,7 +33,7 @@ def map_post():
             lng=0,
             markers=result
         )
-        return render_template('example.html', mymap=mymap)
+        return render_template('html/map.html', mymap=mymap)
 
 @app.route('/titles',methods=['POST'])
 def titles():
@@ -44,7 +43,7 @@ def titles():
         return redirect(url_for('my_form'))
     else:
         result = get_titles_for_city(city)
-        return render_template('titles.html', result=result)
+        return render_template('html/titles.html', result=result)
 
 @app.route('/authors',methods=['POST'])
 def authors():
@@ -60,7 +59,7 @@ def authors():
             lng=0,
             markers=result["cords"]
         )
-        return render_template('authors.html', mymap=mymap, result=result["titles"])
+        return render_template('html/authors.html', mymap=mymap, result=result["titles"])
 
 @app.route('/radius',methods=['POST'])
 def radius():
@@ -72,7 +71,7 @@ def radius():
         return redirect(url_for('my_form'))
     else:
         result = get_title_for_cords(x, y, r)
-        return render_template('radius.html', result=result)
+        return render_template('html/radius.html', result=result)
 
 @app.route("/map")
 def mapview(la, lo):
@@ -103,7 +102,7 @@ def mapview(la, lo):
           }
         ]
     )
-    return render_template('example.html', mymap=mymap, sndmap=sndmap)
+    return render_template('html/example.html', mymap=mymap, sndmap=sndmap)
 
 if __name__ == "__main__":
     app.run(debug=True)
