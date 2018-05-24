@@ -122,6 +122,7 @@ class selen_testing(unittest.TestCase):
 		self.expected2 = "The Story of the Great War, Volume II (of VIII) History of the European War from Official Sources"
 		self.assertEqual(self.result2, self.expected2)
 
+	#Asserts a message response when we dont type anthing in the input field
 	def testCityEmptyInput(self):
 		print("testing testCityEmptyInput")
 		self.elem = self.driver.find_element_by_name("city")
@@ -131,11 +132,23 @@ class selen_testing(unittest.TestCase):
 		self.expected = "Please enter a city name"
 		self.assertEqual(self.result, self.expected)
 
-	def testCityNotFound(self):
-		print("testing testCityNotFound")
+	#Asserts a message response when we cant find a book mentioning the given city name
+	def testCityInvalidInput1(self):
+		print("testing testInvalidInput1")
 		self.elem = self.driver.find_element_by_name("city")
 		self.elem.clear()
-		self.elem.send_keys("This is not a title")
+		self.elem.send_keys("This is not a city")
+		self.driver.find_element_by_xpath("//input[@value='Find titles']").click()
+		self.result = self.driver.find_element_by_class_name("alert").text
+		self.expected = "Can't find titles mentioning that city"
+		self.assertEqual(self.result, self.expected)
+
+	#Asserts a message response when we cant find a book mentioning the given city name
+	def testCityInvalidInput1(self):
+		print("testing testInvalidInput2")
+		self.elem = self.driver.find_element_by_name("city")
+		self.elem.clear()
+		self.elem.send_keys("123456789!#%&/()=")
 		self.driver.find_element_by_xpath("//input[@value='Find titles']").click()
 		self.result = self.driver.find_element_by_class_name("alert").text
 		self.expected = "Can't find titles mentioning that city"
@@ -148,6 +161,28 @@ class selen_testing(unittest.TestCase):
 		self.driver.find_element_by_xpath("//input[@value='Plot cities']").click()
 		self.result = self.driver.find_element_by_class_name("alert").text
 		self.expected = "Please enter a book title"
+		self.assertEqual(self.result, self.expected)
+
+	#Asserts a message response when we cant find the cities mentioned in that book title
+	def testTitleInvalidInput1(self):
+		print("testing testTitleInvalidInput1")
+		self.elem = self.driver.find_element_by_name("title")
+		self.elem.clear()
+		self.elem.send_keys("This is not a city")
+		self.driver.find_element_by_xpath("//input[@value='Find titles']").click()
+		self.result = self.driver.find_element_by_class_name("alert").text
+		self.expected = "Can't find a book title with that name"
+		self.assertEqual(self.result, self.expected)
+
+		#Asserts a message response when we cant find the cities mentioned in that book title
+	def testTitleInvalidInput1(self):
+		print("testing testTitleInvalidInput1")
+		self.elem = self.driver.find_element_by_name("title")
+		self.elem.clear()
+		self.elem.send_keys("123456789!#%&/()=")
+		self.driver.find_element_by_xpath("//input[@value='Find titles']").click()
+		self.result = self.driver.find_element_by_class_name("alert").text
+		self.expected = "Can't find a book title with that name"
 		self.assertEqual(self.result, self.expected)
 
 	def testAuthorEmptyInput(self):
