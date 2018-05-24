@@ -14,7 +14,7 @@ class selen_testing(unittest.TestCase):
 		self.driver.get("http://46.101.61.244:5000/")
 
 	def tearDown(self):
-		self.driver.close()
+		self.driver.get("http://46.101.61.244:5000/")
 
 	def testFindCity(self):
 		print("testing testFindCity")
@@ -150,3 +150,4 @@ class selen_testing(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+    selen_testing.driver.close()
