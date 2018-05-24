@@ -22,6 +22,7 @@ def my_form_post():
 @app.route('/map',methods=['POST'])
 def map_post():
     title = request.form['title']
+    result = get_cities_for_title(title)
     if not title:
         flash('Please enter a book title')
         return redirect(url_for('my_form'))
@@ -29,7 +30,6 @@ def map_post():
         flash("Can't find a book title with that name")
         return redirect(url_for('my_form'))
     else:
-        result = get_cities_for_title(title)
         mymap = Map(
             identifier="view-side",
             lat=0,
@@ -41,6 +41,7 @@ def map_post():
 @app.route('/titles',methods=['POST'])
 def titles():
     city = request.form['city']
+    result = get_titles_for_city(city)
     if not city:
         flash('Please enter a city name')
         return redirect(url_for('my_form'))
@@ -48,12 +49,12 @@ def titles():
         flash("Can't find a city with that name")
         return redirect(url_for('my_form'))
     else:
-        result = get_titles_for_city(city)
         return render_template('html/titles.html', result=result)
 
 @app.route('/authors',methods=['POST'])
 def authors():
     author = request.form['author']
+    result = get_titles_and_cords_for_author(author)
     if not author:
         flash('Please enter an author name')
         return redirect(url_for('my_form'))
@@ -61,7 +62,6 @@ def authors():
         flash("Can't find an author with that name")
         return redirect(url_for('my_form'))
     else:
-        result = get_titles_and_cords_for_author(author)
         mymap = Map(
             identifier="view-side",
             lat=0,
