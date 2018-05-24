@@ -10,7 +10,7 @@ GoogleMaps(app)
 
 @app.route('/')
 def my_form():
-    return render_template('html/login.html')
+    return render_template('html/index.html')
 
 @app.route('/', methods=['POST'])
 def my_form_post():
