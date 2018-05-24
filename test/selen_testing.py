@@ -9,7 +9,7 @@ class selen_testing(unittest.TestCase):
 	@classmethod
 	def setUpClass(cls):
 		options = Options()
-		cls.options.add_argument("--headless")
+		options.add_argument("--headless")
 
 		cls.driver = webdriver.Firefox(options=options, executable_path="geckodriver")
 		cls.driver.get("http://46.101.61.244:5000/")
