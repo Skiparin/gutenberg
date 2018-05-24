@@ -1,0 +1,5 @@
+__pycache__/
+.coverage
+.logon.html.swp
+.pytest_cache/
+geckodriver.log
