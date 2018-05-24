@@ -51,7 +51,7 @@ def authors():
     if not author:
         flash('Please enter an author name')
         return redirect(url_for('index'))
-    elif not result:
+    elif not result["titles"]:
         flash("Can't find an author with that name")
         return redirect(url_for('index'))
     else:
