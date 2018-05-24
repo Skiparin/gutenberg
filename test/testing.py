@@ -29,27 +29,24 @@ def db_connect():
 }))
 
 class database():
+
     def getTitlesForCity(city):
         result = get_titles_for_city(city)
         return result
 
     def getCitiesForTitle(title):
         result = get_cities_for_title(title)
-        for xcord,ycord in result:
-            a = [xcord,ycord]
-        return a
+        return result
 
     def getTitlesAndCordsForAuthor(author):
         result = get_title_and_cords_for_author(author)
-        for title,xcord,y_cord in result:
-            a = [title,xcord,ycord]
-            return a
+        return result
 
     def getTitleForCords(x,y,r):
         result = get_title_for_cords(x,y,r)
         return result
 
-class application_tests(unittest.TestCase):
+class query_tests(unittest.TestCase):
 
     @patch('testing.funny.getVariable',return_value=3)
     def test_mock(self,getVariable):
@@ -81,6 +78,8 @@ class application_tests(unittest.TestCase):
         result = database.getTitleForCords(str(25),str(50),str(0.5))
         self.assertEqual(result[0],"Southern Arabia")
         self.assertEqual(result[-1],"The Book of the Thousand Nights and a Night, Volume 1")
+
+
 
 if __name__ == '__main__':
     unittest.main()
