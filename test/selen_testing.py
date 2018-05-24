@@ -1,6 +1,10 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.firefox.options import Options
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by import By
+from selenium.common.exceptions import TimeoutException
 import unittest
 
 
@@ -67,8 +71,8 @@ class selen_testing(unittest.TestCase):
 		self.elem.send_keys("Denmark")
 		self.driver.find_element_by_xpath("//input[@value='Plot cities']").click()
 
-		self.result = self.driver.find_elements_by_xpath('//div[@class="gmnoprint" and @title]')
-		print(self.result[-1])
+		result = self.driver.find_elements_by_xpath('//div')
+		print(result)
 
 	"""
 	def testPlotTitlesAndCities(self):
