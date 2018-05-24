@@ -1,7 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.firefox.options import Options
-import unittest
+import unittest2
 
 
 class selen_testing(unittest.TestCase):
@@ -17,8 +17,8 @@ class selen_testing(unittest.TestCase):
 	def tearDown(self):
 		self.driver.get("http://46.101.61.244:5000/")
 
-	def tearDownClass():
-		setUpClass.driver.close()
+	def tearDownClass(cls):
+		cls.driver.close()
 
 	"""
 	def testFindCity(self):
