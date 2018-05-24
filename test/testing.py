@@ -57,6 +57,7 @@ class TestTest(unittest.TestCase):
 
     @patch('testing.funny.getVariable',return_value=3)
     def test_mock(self,getVariable):
+        print("testing test_mock")
         self.assertEqual(getVariable(), 3)
 
     def test_con(self):
@@ -64,6 +65,7 @@ class TestTest(unittest.TestCase):
         conn = engine.connect()
 
     def test_get_titles_for_city(self):
+        print("testing test_get_titles_for_city")
         result = database.getTitlesForCity("Odense")
         self.assertEqual(result[0][0],"A Danish Parsonage")
         self.assertEqual(result[0][1],['John Fulford Vicary'])
@@ -72,12 +74,16 @@ class TestTest(unittest.TestCase):
         self.assertEqual(result[0][0],"1000 Mythological Characters Briefly Described Adapted to Private Schools, High Schools and Academies")
         self.assertEqual(result[0][1],['Edward S. Ellis'])
 
+        print("last title and author ----> " + result[-1][0] + ", " + result[-1][1])
+
     def test_get_cities_for_title(self):
+        print("testing test_get_cities_for_title")
         result = database.getCitiesForTitle("London")
         self.assertEqual(float(result[0]),-34.05515)
         self.assertEqual(float(result[1]),18.47617)
 
     def test_get_titles_for_cords(self):
+        print("testing test_get_titles_for_cords")
         result = database.getTitleForCords(str(25),str(50),str(0.5))
         self.assertEqual(result[0],"Southern Arabia")
         self.assertEqual(result[-1],"The Book of the Thousand Nights and a Night, Volume 1")
