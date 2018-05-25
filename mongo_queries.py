@@ -15,10 +15,12 @@ cities = db.cities
 #books.insert({"_id":1, "title": "books", "city_ids": arrays, "authors": arrays})
 
 
-def get_titles_for_city():
-	print(cities.find_one())
+def get_titles_for_city(city):
+	db.books.find( { "titles": { $in: [ "city_ids":True, db.cities.find("name": city,"book_ids":True) ] } } )
 
-get_titles_for_city()
+	print(result)
+
+get_titles_for_city("Odense")
 
 
 def to_array(results):
