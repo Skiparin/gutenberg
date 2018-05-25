@@ -24,15 +24,26 @@ def create_session():
     session = Session()
     return session
 
-def getBooks():
+def exportCitiesToCsv():
     engine = db_connect()
     conn = engine.connect()
     Session = sessionmaker(bind=db_connect())
     session = Session()
-    # Export a CSV containing all Queen albums
+    # Export a CSV containing cities
     query = session.query("id, name, x_cord, y_cord FROM book.cities")
     with open('/root/cities.csv', 'w') as fp:
         postgres_copy.copy_to(query, fp, engine, format='csv', header=True)
     print("complete")
 
-getBooks()
+def exportAuthorsToCsv():
+    engine = db_connect()
+    conn = engine.connect()
+    Session = sessionmaker(bind=db_connect())
+    session = Session()
+    # Export a CSV containing all auhtors
+    query = session.query("id, name FROM book.authors")
+    with open('/root/authors.csv', 'w') as fp:
+        postgres_copy.copy_to(query, fp, engine, format='csv', header=True)
+    print("complete")
+
+exportAuthorsToCsv()
