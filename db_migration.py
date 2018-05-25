@@ -25,6 +25,7 @@ def create_session():
     return session
 
 def getBooks():
+    create_session()
     # Export a CSV containing all Queen albums
     query = session.query("SELECT id AS 'id.auto()', book AS 'book.auto()', title AS 'title.auto()' FROM books")
     with open('/root/tmp.csv', 'w') as fp:
