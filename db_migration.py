@@ -25,17 +25,15 @@ def create_session():
     return session
 
 def getBooks():
-    count = 0
     engine = db_connect()
     conn = engine.connect()
     Session = sessionmaker(bind=db_connect())
     session = Session()
     # Export a CSV containing all Queen albums
-    query = session.query("id, book, title FROM books")
-    with open('/root/tmp.csv', 'w') as fp:
+    query = session.query("id, name, x_cord, y_cord FROM cities")
+    with open('/root/cities.csv', 'w') as fp:
         postgres_copy.copy_to(query, fp, engine, format='csv', header=True)
         print(count)
-        count += 1
     print("complete")
 
 getBooks()
