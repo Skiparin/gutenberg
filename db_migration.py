@@ -27,6 +27,6 @@ def getBooks():
     engine = db_connect()
     conn = engine.connect()
     result = conn.execute(text("""
-        COPY(SELECT * FROM books) TO '/root/temp.csv WITH (FORMAT CSV, HEADER TRUE, DELIMITER E);"""))
+        COPY(SELECT id AS id.auto(), book AS book.auto(), title AS title.auto() FROM books) TO '/root/temp.csv WITH (FORMAT CSV, HEADER TRUE, DELIMITER E'\t');"""))
 
 getBooks()
