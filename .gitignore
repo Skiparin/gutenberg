@@ -3,3 +3,4 @@ __pycache__/
 .logon.html.swp
 .pytest_cache/
 geckodriver.log
+htmlcov
