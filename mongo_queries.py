@@ -16,13 +16,26 @@ cities = db.cities
 
 
 def get_titles_for_city():
+	ids = []
 	cityFound = db.cities.find_one({"name": "Odense"})
-	#result = db.books.find({"titles": {"$in": ["city_ids": "True", cityFound]}})
-	#result = db.books.find({"titles": {"$in": ["city_ids": "True", cityFound]}})
+	for book_ids in cityFound:
+		ids.append[book_ids]
 
-	print(cityFound)
+	result = db.books.find({"titles": {"$where": city_ids == ids} })
 
-get_titles_for_city()
+	print(result)
+
+def get_titles_for_city1():
+	result = db.cities.aggregate("""[
+    '$lookup':
+    {
+        'from': cities,
+        'localField': 'city_ids',
+        'foreignField': 'book_ids',
+        'as': books
+    }]""")
+
+get_titles_for_city1()
 
 
 def to_array(results):
