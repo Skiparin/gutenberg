@@ -52,7 +52,7 @@ def exportBooksToCsv():
     Session = sessionmaker(bind=db_connect())
     session = Session()
     # Export a CSV containing all books
-    query = session.query("id, book, title FROM books")
+    query = session.query("id, title FROM books")
     with open('/root/books.csv', 'w') as fp:
         postgres_copy.copy_to(query, fp, engine, format='csv', header=True)
     print("complete")
