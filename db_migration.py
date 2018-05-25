@@ -41,7 +41,7 @@ def exportAuthorsToCsv():
     Session = sessionmaker(bind=db_connect())
     session = Session()
     # Export a CSV containing all authors
-    query = session.query("id, name FROM book.authors")
+    query = session.query("id, name FROM authors")
     with open('/root/authors.csv', 'w') as fp:
         postgres_copy.copy_to(query, fp, engine, format='csv', header=True)
     print("complete")
@@ -52,9 +52,9 @@ def exportBooksToCsv():
     Session = sessionmaker(bind=db_connect())
     session = Session()
     # Export a CSV containing all books
-    query = session.query("id, book, title FROM book.authors")
+    query = session.query("id, book, title FROM books")
     with open('/root/books.csv', 'w') as fp:
         postgres_copy.copy_to(query, fp, engine, format='csv', header=True)
     print("complete")
 
-exportBooksToCsv()
+exportAuthorsToCsv()
