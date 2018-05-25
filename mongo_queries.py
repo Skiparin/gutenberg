@@ -21,7 +21,7 @@ def get_titles_for_city(city):
 	#result = db.books.find({"titles": {"$in": ["city_ids": "True", cityFound]}})
 	#result = db.books.find({"titles": {"$in": ["city_ids": "True", cityFound]}})
 
-	pprint(cityFound)
+	pprint.pprint(cityFound)
 
 get_titles_for_city("Odense")
 
