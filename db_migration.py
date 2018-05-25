@@ -36,5 +36,6 @@ def getBooks():
         postgres_copy.copy_to(query, fp, engine, format='csv', header=True)
         print(count)
         count += 1
+    print("complete")
 
 getBooks()
