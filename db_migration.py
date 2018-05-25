@@ -33,7 +33,6 @@ def getBooks():
     query = session.query("id, name, x_cord, y_cord FROM cities")
     with open('/root/cities.csv', 'w') as fp:
         postgres_copy.copy_to(query, fp, engine, format='csv', header=True)
-        print(count)
     print("complete")
 
 getBooks()
