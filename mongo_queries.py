@@ -18,7 +18,7 @@ cities = db.cities
 def get_titles_for_city():
 	print(cities.find_one())
 
-getByCityName()
+get_titles_for_city()
 
 
 def to_array(results):
