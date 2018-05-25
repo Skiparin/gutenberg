@@ -26,14 +26,20 @@ def get_titles_for_city():
 	print(result)
 
 def get_titles_for_city1():
-	result = db.cities.aggregate("""[
-    '$lookup':
-    {
-        'from': cities,
-        'localField': 'city_ids',
-        'foreignField': 'book_ids',
-        'as': books
-    }]""")
+	result = db.cities.aggregate(["""
+		{
+			'$unwind': 'city_ids'
+		},
+		{
+			'$lookup':
+				{
+			    	'from': cities,
+			    	'localField': 'city_ids',
+			    	'foreignField': 'book_ids',
+			    	'as': books
+			    }
+		}"""
+	])
 
 get_titles_for_city1()
 
