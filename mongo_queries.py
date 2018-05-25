@@ -16,7 +16,7 @@ cities = db.cities
 
 
 def get_titles_for_city():
-	cityFound = db.cities.findOne({"name": "Odense"})
+	cityFound = db.cities.find_One({"name": "Odense"})
 	#result = db.books.find({"titles": {"$in": ["city_ids": "True", cityFound]}})
 	#result = db.books.find({"titles": {"$in": ["city_ids": "True", cityFound]}})
 
