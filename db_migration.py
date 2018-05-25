@@ -2,6 +2,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.engine.url import URL
 from sqlalchemy import create_engine, text
 from sqlalchemy.orm import sessionmaker
+import postgres_copy
 
 Base = declarative_base()
 
@@ -24,9 +25,9 @@ def create_session():
     return session
 
 def getBooks():
-    engine = db_connect()
-    conn = engine.connect()
-    result = conn.execute(text("""
-        COPY(SELECT id AS 'id.auto()', book AS 'book.auto()', title AS 'title.auto()' FROM books) TO '/root/temp.csv WITH (FORMAT CSV, HEADER TRUE, DELIMITER E'\t');"""))
+    # Export a CSV containing all Queen albums
+    query = session.query("SELECT id AS 'id.auto()', book AS 'book.auto()', title AS 'title.auto()' FROM books")
+    with open('/root/tmp.csv', 'w') as fp:
+        postgres_copy.copy_to(query, fp, engine, format='csv', header=True)
 
 getBooks()
