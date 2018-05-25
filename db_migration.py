@@ -30,7 +30,7 @@ def getBooks():
     Session = sessionmaker(bind=db_connect())
     session = Session()
     # Export a CSV containing all Queen albums
-    query = session.query("id, name, x_cord, y_cord FROM cities")
+    query = session.query("id, name, x_cord, y_cord FROM book.cities")
     with open('/root/cities.csv', 'w') as fp:
         postgres_copy.copy_to(query, fp, engine, format='csv', header=True)
     print("complete")
