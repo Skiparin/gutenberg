@@ -16,7 +16,9 @@ cities = db.cities
 
 
 def get_titles_for_city(city):
-	db.books.find( { "titles": { "$in": [ "city_ids": "True", db.cities.find("name": city,"book_ids":"True") ] } } )
+	db.books.find("""{ 'titles': { '$in': 
+		[ 'city_ids': 'True', db.cities.find('name': city,
+		'book_ids':'True') ] } }""")
 
 	print(result)
 
