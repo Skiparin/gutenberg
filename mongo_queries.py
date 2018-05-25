@@ -2,8 +2,8 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.engine.url import URL
 from sqlalchemy import create_engine, text
 from sqlalchemy.orm import sessionmaker
-from pymongo import MongoClient
 import pymongo
+from pymongo import MongoClient
 
 
 client = MongoClient("mongodb://127.0.0.1:27017")
@@ -16,8 +16,8 @@ cities = db.cities
 
 
 def get_titles_for_city(city):
-	cityFound = db.cities.find("""{'name': city, 'book_ids':'True'}""")
-	result = db.books.find("""{ 'titles': { '$in': [ 'city_ids': 'True', cityFound ] } }""")
+	cityFound = db.cities.find({'name': city, 'book_ids':'True'})
+	result = db.books.find({'titles': {'$in': ['city_ids': 'True', cityFound]}})
 
 	print(result)
 
