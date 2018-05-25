@@ -40,7 +40,7 @@ def exportAuthorsToCsv():
     conn = engine.connect()
     Session = sessionmaker(bind=db_connect())
     session = Session()
-    # Export a CSV containing all auhtors
+    # Export a CSV containing all authors
     query = session.query("id, name FROM book.authors")
     with open('/root/authors.csv', 'w') as fp:
         postgres_copy.copy_to(query, fp, engine, format='csv', header=True)
