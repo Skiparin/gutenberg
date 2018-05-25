@@ -3,6 +3,7 @@ from sqlalchemy.engine.url import URL
 from sqlalchemy import create_engine, text
 from sqlalchemy.orm import sessionmaker
 import pymongo
+import pprint
 from pymongo import MongoClient
 
 
@@ -20,7 +21,7 @@ def get_titles_for_city(city):
 	#result = db.books.find({"titles": {"$in": ["city_ids": "True", cityFound]}})
 	#result = db.books.find({"titles": {"$in": ["city_ids": "True", cityFound]}})
 
-	print(cityFound)
+	pprint(cityFound)
 
 get_titles_for_city("Odense")
 
