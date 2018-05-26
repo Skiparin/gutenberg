@@ -26,7 +26,7 @@ def get_titles_for_city():
 	print(result)
 
 def get_titles_for_city1():
-	result = db.cities.aggregate(["""
+	result = db.cities.aggregate([
 		{
 			'$unwind': 'city_ids'
 		},
@@ -38,7 +38,7 @@ def get_titles_for_city1():
 			    	'foreignField': 'book_ids',
 			    	'as': books
 			    }
-		}"""
+		}
 	])
 
 	print(result)
