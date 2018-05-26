@@ -35,8 +35,8 @@ def get_cities_for_title():
 	array = []
 	for r in city_result:
 		print(r)
-		array.append((float(r[0]),float(r[1])))
-	print(array)
+		#array.append((float(r[0]),float(r[1])))
+	#print(array)
 
 get_cities_for_title()
 
