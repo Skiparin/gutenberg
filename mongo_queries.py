@@ -29,7 +29,7 @@ def get_titles_for_city():
 		temp_array = [book['title'], author_array]
 		book_array.append(temp_array)
 
-	#print(book_array)
+	print(book_array)
 
 def get_titles_for_city1():
 	books_docs = []
