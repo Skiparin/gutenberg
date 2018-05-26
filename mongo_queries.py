@@ -18,7 +18,6 @@ def get_titles_for_city(city):
 	book_results = books.find({'_id': {'$in': ids["book_ids"] }}, {'title': 1, 'authors': 1})
 	for book in book_results:
 		author_array = []
-		#if 'authors' in book:
 		author_results = authors.find({'_id': {'$in': book['authors']}})
 		for author in author_results:
 			author_array.append(author['name'])
