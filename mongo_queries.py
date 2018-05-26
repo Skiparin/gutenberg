@@ -24,7 +24,6 @@ def get_titles_for_city(city):
 				author_array.append(author['name'])
 		temp_array = [book['title'], author_array]
 		book_array.append(temp_array)
-		print(book_array)
 	return book_array
 
 def get_cities_for_title(title):
@@ -62,5 +61,3 @@ def get_titles_and_cords_for_author_to_dict(title_array, cord_array):
 	for x,y in cord_array:
 		r_dict["cords"].append((float(x),float(y)))
 	return r_dict
-
-get_titles_for_city("Odense")
