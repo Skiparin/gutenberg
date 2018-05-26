@@ -20,17 +20,23 @@ def get_titles_for_city():
 	ids = cities.find_one({"name": "Odense"},{'book_ids': 1})
 	book_results = books.find({'_id': {'$in': ids["book_ids"] }}, {'title': 1, 'authors': 1})
 	for book in book_results:
-		print(book)
 		author_array = []
 		if 'authors' in book:
 			author_results = authors.find({'_id': {'$in': book['authors']}})
 			for author in author_results:
-				print(author)
 				author_array.append(author['name'])
 		temp_array = [book['title'], author_array]
 		book_array.append(temp_array)
 
-	print(book_array)
+def get_cities_for_title():
+	city_array = []
+	ids = books.find_one({"title": "Denmark"},{"city_ids":1})
+	city_result = cities.find({'_id': {'$in': ids['city_ids']}},{'x_cords': 1, 'y_cords': 1})
+	for city in city_result:
+		print(city)
+
+
+get_cities_for_title()
 
 def get_titles_for_city1():
 	books_docs = []
@@ -49,7 +55,6 @@ def get_titles_for_city1():
 		}
 	])
 
-	print(result)
 
 def to_array(results):
         arrays = []
@@ -57,4 +62,3 @@ def to_array(results):
                 arrays.append(result[0])
         return arrays
 
-get_titles_for_city()
