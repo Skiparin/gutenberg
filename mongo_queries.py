@@ -51,8 +51,6 @@ def get_titles_and_cords_for_author(author):
 	r_dict = get_titles_and_cords_for_author_to_dict(title_array, cord_array)
 	return r_dict
 
-def get_title_for_cords(x,y,r):
-
 
 def get_titles_and_cords_for_author_to_dict(title_array, cord_array):
 	r_dict = {}
