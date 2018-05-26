@@ -16,15 +16,11 @@ cities = db.cities
 
 
 def get_titles_for_city():
-	ids = []
-	cityFound = db.cities.find_one({"name": "Odense"},{'book_ids': 1})
-	"""books = db.books.find({})
-	for book_ids in cityFound:
-		ids.append[book_ids]
+	bookIds = db.cities.find_one({"name": "Odense"},{'book_ids': 1})
+	result = db.books.find({'title': {'$in': {'city_ids': 1, bookIds}}})
 
-	result = db.books.find({"titles": {"$where": city_ids == ids} })
-	"""
-	print(cityFound)
+	
+	print(result)
 
 def get_titles_for_city1():
 	books_docs = []
