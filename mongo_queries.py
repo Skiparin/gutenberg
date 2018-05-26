@@ -40,24 +40,22 @@ def get_titles_and_cords_for_author(author):
 	ids = authors.find_one({"name": author},{'book_ids': 1, 'city_ids': 1})
 	book_result = books.find({'_id': {'$in': ids["book_ids"] }}, {'title': 1, 'city_ids': 1})
 	city_result = cities.find({'_id': {'$in': ids['city_ids'] }},{'x_cord': 1, 'y_cord': 1})
-
 	for t in book_result:
 		title_array.append(t['title'])
-
 	for cords in city_result:
 		cord_array.append((float(cords['x_cord']),float(cords['y_cord'])))
-
 	r_dict = get_titles_and_cords_for_author_to_dict(title_array, cord_array)
 	return r_dict
 
 def get_title_for_cords():
 	book_array = []
 	location_array = []
-	ids = cities.find({'_id': {'$geoWithin': {'$center': {'x_cord': 50, 'y_cord': 20}}}}, {'book_ids': 1})
-	for book in ids:
-		location_array.append(book[0])
+	location = cities.find({'x_cord': 1, 'y_cord': 1})
+	for x,y in location:
+		location_array.append(x['x_cord'], y['y_cord'])
 	print(location_array)
 	"""
+	ids = cities.find({'_id': {'$geoWithin': {'$center': {'x_cord': 50, 'y_cord': 20}}}}, {'book_ids': 1})
 	ids = cities.find({'_id': {'type': 'point' , ['x_cord': 50, 'y_cord': 20]}}, {'book_ids': 1})
 	book_result = books.find({'_id': {'$in': ids['book_ids']}}, {'title': 1})
 	for title in book_results:
