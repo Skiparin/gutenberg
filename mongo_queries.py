@@ -37,18 +37,18 @@ def get_titles_for_city1():
 			    	'from': cities,
 			    	'localField': 'city_ids',
 			    	'foreignField': 'book_ids',
-			    	'as': 'books_docs'
+			    	'as': books_docs
 			    }
 		}
 	])
 
 	print(result)
 
-get_titles_for_city1()
-
-
 def to_array(results):
         arrays = []
         for result in results:
                 arrays.append(result[0])
         return arrays
+
+get_titles_for_city()
+        
