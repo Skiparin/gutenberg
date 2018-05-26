@@ -52,10 +52,10 @@ def get_titles_and_cords_for_author(author):
 
 def get_title_for_cords():
 	book_array = []
-	location = cities.find('x_cord': 1 , 'y_cord': 1)
+	location = cities.find({'x_cord': 1, 'y_cord': 1})
 	print(location)
-	ids = cities.find('_id': {'type': 'point' , ['x_cord': 50, 'y_cord': 20]}, {'book_ids': 1})
-	book_result = books.find('_id': {'$in': ids['book_ids']}, {'title': 1})
+	ids = cities.find({'_id': {'type': 'point' , ['x_cord': 50, 'y_cord': 20]}}, {'book_ids': 1})
+	book_result = books.find({'_id': {'$in': ids['book_ids']}}, {'title': 1})
 	for title in book_results:
 		book_result.append(title['title'])
 	#print(book_array)
