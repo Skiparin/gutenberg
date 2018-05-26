@@ -49,7 +49,8 @@ def get_titles_and_cords_for_author(author):
 		cord_array.append((float(cords['x_cord']),float(cords['y_cord'])))
 
 	r_dict = get_titles_and_cords_for_author_to_dict(title_array, cord_array)
-	return r_dict
+	print(r_dict)
+	#return r_dict
 
 
 def get_titles_and_cords_for_author_to_dict(title_array, cord_array):
