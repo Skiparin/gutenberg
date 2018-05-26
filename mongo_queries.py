@@ -24,6 +24,7 @@ def get_titles_for_city(city):
 				author_array.append(author['name'])
 		temp_array = [book['title'], author_array]
 		book_array.append(temp_array)
+		print(book_array)
 	return book_array
 
 def get_cities_for_title(title):
