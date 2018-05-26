@@ -33,8 +33,8 @@ def get_cities_for_title():
 	ids = books.find_one({"title": "Denmark"},{"city_ids":1})
 	city_result = cities.find({'_id': {'$in': ids['city_ids']}},{'x_cords': 1, 'y_cords': 1})
 	for r in city_result:
-        array.append((float(r[0]),float(r[1])))
-    print(array)
+		array.append((float(r[0]),float(r[1])))
+	print(array)
 
 get_cities_for_title()
 
