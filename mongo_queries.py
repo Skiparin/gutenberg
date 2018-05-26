@@ -26,6 +26,7 @@ def get_titles_for_city():
 	print(result)
 
 def get_titles_for_city1():
+	books_docs = []
 	result = db.cities.aggregate([
 		{
 			'$unwind': 'city_ids'
