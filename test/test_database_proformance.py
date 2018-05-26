@@ -5,7 +5,7 @@ if parentPath not in sys.path:
     sys.path.insert(0, parentPath)
 from psql_queries import get_titles_for_city, get_cities_for_title, get_titles_and_cords_for_author, get_title_for_cords
 
-get_titles_for_city("Denmark")
+get_titles_for_city("Odense")
 
 title_array = ["Danger at the Drawbridge",
 "Sally Dows and Other Stories",
