@@ -37,7 +37,7 @@ def get_titles_for_city1():
 			    	'from': cities,
 			    	'localField': 'city_ids',
 			    	'foreignField': 'book_ids',
-			    	'as': books_docs
+			    	'as': 'books_docs'
 			    }
 		}
 	])
