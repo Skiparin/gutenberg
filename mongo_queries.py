@@ -50,7 +50,7 @@ def get_titles_and_cords_for_author(author):
 def get_title_for_cords():
 	book_array = []
 	location_array = []
-	location = cities.find({'x_cord': 1, 'y_cord': 1})
+	location = cities.find()
 	for x,y in location:
 		location_array.append(x['x_cord'], y['y_cord'])
 	print(location_array)
