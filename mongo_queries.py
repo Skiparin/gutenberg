@@ -54,6 +54,8 @@ def get_titles_and_cords_for_author():
 	print(title_array)
 	print(cord_array)
 
+get_titles_and_cords_for_author()
+
 def get_titles_for_city1():
 	books_docs = []
 	result = db.cities.aggregate([
