@@ -55,7 +55,6 @@ def get_titles_and_cords_for_author():
 	print(r_dict)
 	#return title_array, cord_array
 
-get_titles_and_cords_for_author()
 
 def get_titles_and_cords_for_author_to_dict(title_array, cord_array):
     r_dict = {}
@@ -83,3 +82,6 @@ def get_titles_for_city1():
 			    }
 		}
 	])
+
+get_titles_and_cords_for_author()
+	
