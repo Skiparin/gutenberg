@@ -18,8 +18,8 @@ cities = db.cities
 def get_titles_for_city():
 	bookIds = db.cities.find_one({"name": "Odense"},{'book_ids': 1})
 	result = db.books.find_one({'title': {'$elemMatch': {'city_ids': 1, 'cities.book_ids': bookIds }}})
-	for doc in result:
-		print(doc)
+	for title in result:
+		print(title)
 
 def get_titles_for_city1():
 	books_docs = []
