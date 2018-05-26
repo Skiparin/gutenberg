@@ -51,9 +51,11 @@ def get_title_for_cords():
 	book_array = []
 	location_array = []
 	ids = cities.find({'_id': {'$geoWithin': {'$center': {'x_cord': 50, 'y_cord': 20}}}}, {'book_ids': 1})
-	for book in ids:
+	print(ids['book_ids'])
+	"""for book in ids:
 		location_array.append(book['book_ids'])
 	print(location_array)
+	"""
 	"""
 	ids = cities.find({'_id': {'type': 'point' , ['x_cord': 50, 'y_cord': 20]}}, {'book_ids': 1})
 	book_result = books.find({'_id': {'$in': ids['book_ids']}}, {'title': 1})
