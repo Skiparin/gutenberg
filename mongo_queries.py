@@ -45,8 +45,8 @@ def get_titles_and_cords_for_author():
 	book_result = books.find_one({'_id': {'$in': ids["book_ids"] }}, {'title': 1, 'city_ids': 1})
 	city_result = cities.find({'_id': {'$in': book_result['city_ids'] }},{'x_cord': 1, 'y_cord': 1})
 
-	for title in book_result:
-		title_array.append(title['title'])
+	for t in book_result:
+		title_array.append(t['title'])
 
 	for cords in city_result:
 		cord_array.append((float(cords['x_cord']),float(cords['y_cord'])))
