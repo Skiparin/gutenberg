@@ -5,6 +5,8 @@ if parentPath not in sys.path:
     sys.path.insert(0, parentPath)
 from mongo_queries import get_titles_for_city, get_cities_for_title, get_titles_and_cords_for_author
 
+get_titles_for_city("Denmark")
+
 city_array = ["Dubai",
  "Sharjah",
  "Al Ain",
