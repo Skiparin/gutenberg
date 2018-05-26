@@ -18,8 +18,9 @@ cities = db.cities
 def get_titles_for_city():
 	ids = []
 	cityFound = db.cities.find_one({"name": "Odense"})
+	books = db.books.find({})
 	for book_ids in cityFound:
-		ids.append[book_ids]
+		ids.append[book_ids[0]]
 
 	result = db.books.find({"titles": {"$where": city_ids == ids} })
 
@@ -51,4 +52,3 @@ def to_array(results):
         return arrays
 
 get_titles_for_city()
-        
