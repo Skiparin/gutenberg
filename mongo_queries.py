@@ -61,7 +61,7 @@ def get_titles_and_cords_for_author_to_dict(title_array, cord_array):
     r_dict["titles"] = []
     r_dict["cords"] = []
     for t in title_array:
-        r_dict["titles"].append(t[0])
+        r_dict["titles"].append(t)
         for x,y in cord_array:
             r_dict["cords"].append((float(x),float(y)))
     return r_dict
