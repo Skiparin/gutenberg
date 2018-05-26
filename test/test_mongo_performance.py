@@ -40,6 +40,8 @@ authors_array = [ "Max Simon Nordau",
 "Harold Whetstone Johnston",
 ]
 
+temp_time = 0
+
 print("get_titles_for_city")
 for i in city_array:
 	start = time.time()
