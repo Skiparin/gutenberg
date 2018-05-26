@@ -35,10 +35,10 @@ def get_cities_for_title(title):
 		array.append((float(r['x_cord']),float(r['y_cord'])))
 	return array
 
-def get_titles_and_cords_for_author():
+def get_titles_and_cords_for_author(author):
 	title_array = []
 	cord_array = []
-	ids = authors.find_one({"name": "Hans Christian Andersen"},{'book_ids': 1, 'city_ids': 1})
+	ids = authors.find_one({"name": author},{'book_ids': 1, 'city_ids': 1})
 	book_result = books.find({'_id': {'$in': ids["book_ids"] }}, {'title': 1, 'city_ids': 1})
 	city_result = cities.find({'_id': {'$in': ids['city_ids'] }},{'x_cord': 1, 'y_cord': 1})
 
@@ -49,8 +49,7 @@ def get_titles_and_cords_for_author():
 		cord_array.append((float(cords['x_cord']),float(cords['y_cord'])))
 
 	r_dict = get_titles_and_cords_for_author_to_dict(title_array, cord_array)
-	print(r_dict)
-	#return r_dict
+	return r_dict
 
 
 def get_titles_and_cords_for_author_to_dict(title_array, cord_array):
@@ -63,4 +62,3 @@ def get_titles_and_cords_for_author_to_dict(title_array, cord_array):
 		r_dict["cords"].append((float(x),float(y)))
 	return r_dict
 
-get_titles_and_cords_for_author()
