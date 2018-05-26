@@ -53,7 +53,8 @@ def get_titles_and_cords_for_author():
 
 	result = get_titles_and_cords_for_author_to_dict(title_array, cord_array)
 	print(result)
-	return title_array, cord_array
+	#return title_array, cord_array
+get_titles_and_cords_for_author()
 
 
 
@@ -83,9 +84,3 @@ def get_titles_and_cords_for_author_to_dict(title, cords):
         for x,y in zip((t[1]),(t[2])):
             r_dict["cords"].append((float(x),float(y)))
     return r_dict
-
-def to_array(result):
-        arrays = []
-        for result in results:
-                arrays.append(result[0])
-        return arrays
