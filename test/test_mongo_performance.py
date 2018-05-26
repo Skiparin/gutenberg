@@ -5,18 +5,6 @@ if parentPath not in sys.path:
     sys.path.insert(0, parentPath)
 from mongo_queries import get_titles_for_city, get_cities_for_title, get_titles_and_cords_for_author
 
-get_titles_for_city("Denmark")
-title_array = ["Danger at the Drawbridge",
-"Sally Dows and Other Stories",
-"Alaska Days with John Muir",
-"Undine",
-"Fun And Frolic",
-"Missing",
-"The Red Hand of Ulster",
-"The Confession of a Fool",
-"William Shakespeare",
-"Zero Data"]
-
 city_array = ["Dubai",
  "Sharjah",
  "Al Ain",
@@ -28,6 +16,17 @@ city_array = ["Dubai",
  "Kabul",
  "Jalalabad"
 ]
+
+title_array = ["Danger at the Drawbridge",
+"Sally Dows and Other Stories",
+"Alaska Days with John Muir",
+"Undine",
+"Fun And Frolic",
+"Missing",
+"The Red Hand of Ulster",
+"The Confession of a Fool",
+"William Shakespeare",
+"Zero Data"]
 
 authors_array = [ "Max Simon Nordau",
 "Lewis Carroll",
