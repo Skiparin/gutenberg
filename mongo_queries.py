@@ -34,7 +34,7 @@ def get_cities_for_title():
 	city_result = cities.find({'_id': {'$in': ids['city_ids'] }},{'x_cord': 1, 'y_cord': 1})
 	array = []
 	for r in city_result:
-		array.append((float(r[0]),float(r[2])))
+		array.append((float(r['x_cord']),float(r['y_cord'])))
 	print(array)
 
 get_cities_for_title()
