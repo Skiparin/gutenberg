@@ -40,6 +40,19 @@ authors_array = [ "Max Simon Nordau",
 "Harold Whetstone Johnston",
 ]
 
+cord_array = [
+[1,1,1],
+[2,2,2],
+[3,3,3],
+[4,4,4],
+[5,5,5],
+[6,6,6],
+[7,7,7],
+[8,8,8],
+[9,9,9],
+[10,10,10],
+]
+
 temp_time = 0
 
 print("get_titles_for_city")
@@ -74,3 +87,16 @@ for i in authors_array:
 	
 print(temp_time/10)
 temp_time = 0
+
+"""
+print("get_title_for_cords")
+for i in cord_array:
+	start = time.time()
+	get_title_for_cords(str(i[0]),str(i[1]),str(i[2]))
+	end = time.time()
+	sample_time = end - start
+	temp_time += sample_time
+
+print(temp_time/10)
+temp_time = 0
+"""

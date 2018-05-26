@@ -3,9 +3,10 @@ import time
 parentPath = os.path.abspath("..")
 if parentPath not in sys.path:
     sys.path.insert(0, parentPath)
-from psql_queries import get_cities_for_title, get_titles_for_city, get_titles_and_cords_for_author, get_title_for_cords
+from psql_queries import get_titles_for_city, get_cities_for_title, get_titles_and_cords_for_author, get_title_for_cords
 
-get_cities_for_title("Denmark")
+get_titles_for_city("Denmark")
+
 title_array = ["Danger at the Drawbridge",
 "Sally Dows and Other Stories",
 "Alaska Days with John Muir",
@@ -53,6 +54,18 @@ cord_array = [
 [9,9,9],
 [10,10,10],
 ]
+
+temp_time = 0
+
+print("get_titles_for_city")
+for i in city_array:
+	start = time.time()
+	get_titles_for_city(i)
+	end = time.time()
+	sample_time = end - start
+	temp_time += sample_time
+	
+print(temp_time/10)
 temp_time = 0
 
 print("get_cities_for_title")
@@ -65,16 +78,7 @@ for i in title_array:
 	
 print(temp_time/10)
 temp_time = 0
-print("get_titles_for_city")
-for i in city_array:
-	start = time.time()
-	get_titles_for_city(i)
-	end = time.time()
-	sample_time = end - start
-	temp_time += sample_time
-	
-print(temp_time/10)
-temp_time = 0
+
 print("get_titles_and_cords_for_author")
 for i in authors_array:
 	start = time.time()
@@ -85,6 +89,7 @@ for i in authors_array:
 	
 print(temp_time/10)
 temp_time = 0
+
 print("get_title_for_cords")
 for i in cord_array:
 	start = time.time()
