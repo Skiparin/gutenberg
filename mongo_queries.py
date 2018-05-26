@@ -51,8 +51,8 @@ def get_titles_and_cords_for_author():
 	for cords in city_result:
 		cord_array.append((float(cords['x_cord']),float(cords['y_cord'])))
 
-	result = get_titles_and_cords_for_author_to_dict(title_array, cord_array)
-	print(result)
+	r_dict = get_titles_and_cords_for_author_to_dict(title_array, cord_array)
+	print(r_dict)
 	#return title_array, cord_array
 
 get_titles_and_cords_for_author()
