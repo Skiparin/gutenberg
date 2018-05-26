@@ -15,8 +15,8 @@ cities = db.cities
 def get_titles_for_city(city):
 	book_array = []
 	ids = cities.find_one({"name": city},{'book_ids': 1})
-	book_results = books.find({'_id': {'$in': ids["book_ids"] }}, {'title': 1, 'authors': 1})
-	for book in book_results:
+	book_result = books.find({'_id': {'$in': ids["book_ids"] }}, {'title': 1, 'authors': 1})
+	for book in book_result:
 		author_array = []
 		author_results = authors.find({'_id': {'$in': book['authors']}})
 		for author in author_results:
@@ -50,6 +50,15 @@ def get_titles_and_cords_for_author(author):
 	r_dict = get_titles_and_cords_for_author_to_dict(title_array, cord_array)
 	return r_dict
 
+def get_title_for_cords():
+	book_array = []
+	location = cities.find('x_cord': 1 , 'y_cord': 1)
+	print(location)
+	ids = cities.find('_id': {'type': 'point' , ['x_cord': 50, 'y_cord': 20]}, {'book_ids': 1})
+	book_result = books.find('_id': {'$in': ids['book_ids']}, {'title': 1})
+	for title in book_results:
+		book_result.append(title['title'])
+	#print(book_array)
 
 def get_titles_and_cords_for_author_to_dict(title_array, cord_array):
 	r_dict = {}
@@ -60,3 +69,5 @@ def get_titles_and_cords_for_author_to_dict(title_array, cord_array):
 	for x,y in cord_array:
 		r_dict["cords"].append((float(x),float(y)))
 	return r_dict
+
+get_title_for_cords()
