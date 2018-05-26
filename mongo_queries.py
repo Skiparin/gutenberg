@@ -41,6 +41,8 @@ def get_titles_for_city1():
 		}"""
 	])
 
+	print(result)
+
 get_titles_for_city1()
 
 
