@@ -56,7 +56,11 @@ def get_title_for_cords():
 		temp_array.append(i['book_ids'])
 	temp_flat = [item for sublist in temp_array for item in sublist]
 	temp_set = set(temp_flat)
-	book_result = books.find({'_id': {'$in': temp_set['book_ids']}}, {'title': 1})
+	r_dict = {}
+	r_dict['book_ids'] = []
+	for b in temp_set:
+		r_dict['book_ids'].append(b)
+	book_result = books.find({'_id': {'$in': r_dict['book_ids']}}, {'title': 1})
 	for book in book_result:
 		book_array.append(book['title'])
 	print(book_array)
