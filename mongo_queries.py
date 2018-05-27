@@ -48,6 +48,7 @@ def get_titles_and_cords_for_author(author):
 	return r_dict
 
 def get_title_for_cords(x,y,r):
+	r = r * 222638
 	book_array = []
 	temp_array = []
 	temp_flat = []
@@ -63,6 +64,7 @@ def get_title_for_cords(x,y,r):
 	book_result = books.find({'_id': {'$in': r_dict['book_ids']}}, {'title': 1})
 	for book in book_result:
 		book_array.append(book['title'])
+	print(book_array)
 	return(book_array)
 
 def get_titles_and_cords_for_author_to_dict(title_array, cord_array):
@@ -77,4 +79,4 @@ def get_titles_and_cords_for_author_to_dict(title_array, cord_array):
 
 #get_cities_for_title("Danger at the Drawbridge")
 #get_titles_and_cords_for_author("Max Simon Nordau")
-#get_title_for_cords(1, 1, 1000000)
+get_title_for_cords(55.795205, 12.472396, 0.15)
