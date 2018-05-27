@@ -51,7 +51,7 @@ def get_title_for_cords():
 	book_array = []
 	#ids = cities.find({'_id': {'$geoNear': {'$center': {'x_cord': 50, 'y_cord': 20}}}}, {'book_ids': 1})
 	ids = db.cities.find({'location': { '$near': {'$geometry': { 'type': "Point", 'coordinates': [ -73.9667, 40.78 ] },'$maxDistance': 5000}}}, {'book_ids': 1})
-	book_result = books.find({'_id': {'$in': ids['book_ids']}}, {'title': 1})
+	book_result = books.find({'_id': {'$in': ids['book_ids'] }}, {'title': 1})
 	for book in book_result:
 		book_array.append(book['title'])
 	print(book_array)
