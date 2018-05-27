@@ -51,10 +51,15 @@ def get_title_for_cords():
 	book_array = []
 	#ids = cities.find({'_id': {'$geoNear': {'$center': {'x_cord': 50, 'y_cord': 20}}}}, {'book_ids': 1})
 	ids = db.cities.find({'location': { '$near': {'$geometry': { 'type': "Point", 'coordinates': [ -73.9667, 40.78 ] },'$maxDistance': 5000}}}, {'book_ids': 1})
+	for book in ids:
+		book_array.append(book['book_ids'])
+	print(book_array)
+	"""	
 	book_result = books.find({'_id': {'$in': ids['book_ids'] }}, {'title': 1})
 	for book in book_result:
 		book_array.append(book['title'])
 	print(book_array)
+	"""
 
 def get_titles_and_cords_for_author_to_dict(title_array, cord_array):
 	r_dict = {}
