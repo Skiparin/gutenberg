@@ -72,4 +72,6 @@ def get_titles_and_cords_for_author_to_dict(title_array, cord_array):
 		r_dict["cords"].append((float(x),float(y)))
 	return r_dict
 
-get_title_for_cords()
+get_titles_for_city("Odense")
+get_cities_for_title("Danger at the Drawbridge")
+get_titles_and_cords_for_author("Max Simon Nordau")
