@@ -43,16 +43,16 @@ authors_array = [ "Max Simon Nordau",
 ]
 
 cord_array = [
-[1,1,1],
-[2,2,2],
-[3,3,3],
-[4,4,4],
-[5,5,5],
-[6,6,6],
-[7,7,7],
-[8,8,8],
-[9,9,9],
-[10,10,10],
+[1,1,10000],
+[2,2,20000],
+[3,3,30000],
+[4,4,40000],
+[5,5,50000],
+[6,6,60000],
+[7,7,70000],
+[8,8,80000],
+[9,9,90000],
+[10,10,100000],
 ]
 
 temp_time = 0
@@ -90,7 +90,6 @@ for i in authors_array:
 print(temp_time/10)
 temp_time = 0
 
-"""
 print("get_title_for_cords")
 for i in cord_array:
 	start = time.time()
@@ -101,4 +100,3 @@ for i in cord_array:
 
 print(temp_time/10)
 temp_time = 0
-"""

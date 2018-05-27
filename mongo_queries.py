@@ -47,11 +47,11 @@ def get_titles_and_cords_for_author(author):
 	r_dict = get_titles_and_cords_for_author_to_dict(title_array, cord_array)
 	return r_dict
 
-def get_title_for_cords():
+def get_title_for_cords(x,y,r):
 	book_array = []
 	temp_array = []
 	temp_flat = []
-	ids = db.cities.find({'location': { '$near': {'$geometry': { 'type': "Point", 'coordinates': [55.6829538, 12.58070789999999] },'$maxDistance': 3000}}}, {'book_ids': 1})
+	ids = db.cities.find({'location': { '$near': {'$geometry': { 'type': "Point", 'coordinates': [y,x] },'$maxDistance': r}}}, {'book_ids': 1})
 	for i in ids:
 		temp_array.append(i['book_ids'])
 	temp_flat = [item for sublist in temp_array for item in sublist]
@@ -63,7 +63,7 @@ def get_title_for_cords():
 	book_result = books.find({'_id': {'$in': r_dict['book_ids']}}, {'title': 1})
 	for book in book_result:
 		book_array.append(book['title'])
-	print(book_array)
+	return(book_array)
 
 def get_titles_and_cords_for_author_to_dict(title_array, cord_array):
 	r_dict = {}
@@ -77,4 +77,4 @@ def get_titles_and_cords_for_author_to_dict(title_array, cord_array):
 
 #get_cities_for_title("Danger at the Drawbridge")
 #get_titles_and_cords_for_author("Max Simon Nordau")
-get_title_for_cords()
+#get_title_for_cords(50, 20, 10000)
