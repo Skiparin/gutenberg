@@ -32,7 +32,6 @@ def get_cities_for_title(title):
 	array = []
 	for cord in city_result:
 		array.append((float(cord["location"]["coordinates"][0]), float(cord["location"]["coordinates"][1])))
-	print(array)
 	return array
 
 def get_titles_and_cords_for_author(author):
@@ -44,8 +43,9 @@ def get_titles_and_cords_for_author(author):
 	for t in book_result:
 		title_array.append(t['title'])
 	for cord in city_result:
-		cord_array.append((float(cord["location"]["coordinates"]["x_cord"]), float(cord["location"]["coordinates"]["y_cord"])))
+		cord_array.append((float(cord["location"]["coordinates"][0]), float(cord["location"]["coordinates"][1])))
 	r_dict = get_titles_and_cords_for_author_to_dict(title_array, cord_array)
+	print(r_dict)
 	return r_dict
 
 def get_title_for_cords():
@@ -73,5 +73,6 @@ def get_titles_and_cords_for_author_to_dict(title_array, cord_array):
 		r_dict["cords"].append(cords)
 	return r_dict
 
-get_cities_for_title("Danger at the Drawbridge")
+#get_cities_for_title("Danger at the Drawbridge")
+get_titles_and_cords_for_author("Max Simon Nordau")
 #get_title_for_cords()
