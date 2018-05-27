@@ -43,7 +43,7 @@ def get_titles_and_cords_for_author(author):
 	city_result = cities.find({'_id': {'$in': ids['city_ids'] }},{'location': 1})
 	for t in book_result:
 		title_array.append(t['title'])
-	for cords in city_result:
+	for cord in city_result:
 		cord_array.append((float(cord["location"]["coordinates"]["x_cord"]), float(cord["location"]["coordinates"]["y_cord"])))
 	r_dict = get_titles_and_cords_for_author_to_dict(title_array, cord_array)
 	print(r_dict)
