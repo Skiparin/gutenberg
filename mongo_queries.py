@@ -28,7 +28,7 @@ def get_titles_for_city(city):
 def get_cities_for_title(title):
 	city_array = []
 	ids = books.find_one({"title": title},{"city_ids":1})
-	city_result = cities.find({'_id': {'$in': ids['city_ids'] }},{'location': {'coordinates': 1}})
+	city_result = cities.find({'_id': {'$in': ids['city_ids'] }},{'coordinates':[1, 1]})
 	array = []
 	for c in city_result:
 		array.append([c[0], c[1]])
