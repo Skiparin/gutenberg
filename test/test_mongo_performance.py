@@ -3,7 +3,7 @@ import time
 parentPath = os.path.abspath("..")
 if parentPath not in sys.path:
     sys.path.insert(0, parentPath)
-from mongo_queries import get_titles_for_city, get_cities_for_title, get_titles_and_cords_for_author
+from mongo_queries import get_titles_for_city, get_cities_for_title, get_titles_and_cords_for_author, get_title_for_cords
 
 get_titles_for_city("Odense")
 
