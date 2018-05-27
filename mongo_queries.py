@@ -71,8 +71,8 @@ def get_titles_and_cords_for_author_to_dict(title_array, cord_array):
 	r_dict["cords"] = []
 	for t in title_array:
 		r_dict["titles"].append(t)
-	for x,y in cord_array:
-		r_dict["cords"].append((float(x),float(y)))
+	for cords in cord_array:
+		r_dict["cords"].append(cords)
 	return r_dict
 
 get_titles_for_city("Odense")
