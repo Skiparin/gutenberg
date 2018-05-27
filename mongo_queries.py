@@ -51,7 +51,7 @@ def get_title_for_cords():
 	book_array = []
 	temp_array = []
 	temp_flat = []
-	ids = db.cities.find({'location': { '$near': {'$geometry': { 'type': "Point", 'coordinates': [ -73.9667, 40.78 ] },'$maxDistance': 10000}}}, {'book_ids': 1})
+	ids = db.cities.find({'location': { '$near': {'$geometry': { 'type': "Point", 'coordinates': [ 50, 20 ] },'$maxDistance': 10000}}}, {'book_ids': 1})
 	for i in ids:
 		temp_array.append(i['book_ids'])
 	temp_flat = [item for sublist in temp_array for item in sublist]
@@ -63,6 +63,7 @@ def get_title_for_cords():
 	book_result = books.find({'_id': {'$in': r_dict['book_ids']}}, {'title': 1})
 	for book in book_result:
 		book_array.append(book['title'])
+	print(book_array)
 
 def get_titles_and_cords_for_author_to_dict(title_array, cord_array):
 	r_dict = {}
