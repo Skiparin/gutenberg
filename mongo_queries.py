@@ -39,6 +39,11 @@ def get_titles_and_cords_for_author(author):
 	cord_array = []
 	ids = authors.find_one({"name": author},{'book_ids': 1, 'city_ids': 1})
 	book_result = books.find({'_id': {'$in': ids["book_ids"] }}, {'title': 1, 'city_ids': 1})
+	temp_array = []
+	for book in book_result:
+		temp_array.append(book['city_ids'])
+	print(temp_array)
+	"""
 	city_result = cities.find({'_id': {'$in': ids['city_ids'] }},{'location': 1})
 	for t in book_result:
 		title_array.append(t['title'])
@@ -46,7 +51,7 @@ def get_titles_and_cords_for_author(author):
 		cord_array.append((float(cord["location"]["coordinates"][0]), float(cord["location"]["coordinates"][1])))
 	r_dict = get_titles_and_cords_for_author_to_dict(title_array, cord_array)
 	return r_dict
-
+	"""
 def get_title_for_cords():
 	book_array = []
 	temp_array = []
@@ -67,5 +72,5 @@ def get_titles_and_cords_for_author_to_dict(title_array, cord_array):
 	return r_dict
 
 #get_cities_for_title("Danger at the Drawbridge")
-#get_titles_and_cords_for_author("Max Simon Nordau")
-get_title_for_cords()
+get_titles_and_cords_for_author("Max Simon Nordau")
+#get_title_for_cords()
