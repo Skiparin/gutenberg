@@ -50,13 +50,13 @@ def get_titles_and_cords_for_author(author):
 def get_title_for_cords():
 	book_array = []
 	temp_array = []
-	temp_final = []
+	temp_flat = []
 	ids = db.cities.find({'location': { '$near': {'$geometry': { 'type': "Point", 'coordinates': [ -73.9667, 40.78 ] },'$maxDistance': 5000}}}, {'book_ids': 1})
 	for i in ids:
 		temp_array.append(i['book_ids'])
-
-	temp_final = [item for sublist in temp_array for item in sublist]
-	print(temp_final)
+	temp_flat = [item for sublist in temp_array for item in sublist]
+	temp_set = set(temp_flat)
+	print(temp_set)
 	"""
 	book_result = books.find({'_id': {'$in': temp_array }}, {'title': 1})
 	for book in book_result:
