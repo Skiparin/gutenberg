@@ -78,4 +78,4 @@ def get_titles_and_cords_for_author_to_dict(title_array, cord_array):
 
 #get_cities_for_title("Danger at the Drawbridge")
 #get_titles_and_cords_for_author("Max Simon Nordau")
-get_title_for_cords(1, 1, 1000000)
+get_title_for_cords(1, 1, 100000)
