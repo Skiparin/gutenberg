@@ -30,9 +30,8 @@ def get_cities_for_title(title):
 	ids = books.find_one({"title": title},{"city_ids":1})
 	city_result = cities.find({'_id': {'$in': ids['city_ids'] }}, {'location': 1})
 	array = []
-	for cords in city_result:
-		print(cords)
-		array.append((float(cords['location']['coordinates']["x_cord"]), float(cords['location']['coordinates']["y_cord"])))
+	for cord in city_result:
+		array.append((float(cord["location"]["coordinates"]["x_cord"]), float(cord["location"]["coordinates"]["y_cord"])))
 	print(array)
 	return array
 
@@ -75,5 +74,5 @@ def get_titles_and_cords_for_author_to_dict(title_array, cord_array):
 		r_dict["cords"].append(cords)
 	return r_dict
 
-get_cities_for_title("Danger at the Drawbridge")
+get_cities_for_title("Denmark")
 #get_titles_and_cords_for_author("Max Simon Nordau")
