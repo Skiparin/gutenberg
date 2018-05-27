@@ -31,6 +31,7 @@ def get_cities_for_title(title):
 	city_result = cities.find_one({'_id': {'$in': ids['city_ids'] }}, {'location': 1})
 	array = []
 	for cords in city_result:
+		print(cords)
 		array.append((float(cords['location']['coordinates']["x_cord"]), float(cords['location']['coordinates']["y_cord"])))
 	print(array)
 	return array
