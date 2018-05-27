@@ -63,6 +63,7 @@ def get_title_for_cords(x,y,r):
 	book_result = books.find({'_id': {'$in': r_dict['book_ids']}}, {'title': 1})
 	for book in book_result:
 		book_array.append(book['title'])
+	print(book_array)
 	return(book_array)
 
 def get_titles_and_cords_for_author_to_dict(title_array, cord_array):
