@@ -28,10 +28,11 @@ def get_titles_for_city(city):
 def get_cities_for_title(title):
 	city_array = []
 	ids = books.find_one({"title": title},{"city_ids":1})
-	city_result = cities.find({'_id': {'$in': ids['city_ids'] }},{'x_cord': 1, 'y_cord': 1})
+	city_result = cities.find({'_id': {'$in': ids['city_ids'] }},{'coordinates': 1})
 	array = []
 	for r in city_result:
-		array.append((float(r['x_cord']),float(r['y_cord'])))
+		array.append((float(r[0]),float(r[1])))
+	print(array)
 	return array
 
 def get_titles_and_cords_for_author(author):
@@ -39,11 +40,11 @@ def get_titles_and_cords_for_author(author):
 	cord_array = []
 	ids = authors.find_one({"name": author},{'book_ids': 1, 'city_ids': 1})
 	book_result = books.find({'_id': {'$in': ids["book_ids"] }}, {'title': 1, 'city_ids': 1})
-	city_result = cities.find({'_id': {'$in': ids['city_ids'] }},{'x_cord': 1, 'y_cord': 1})
+	city_result = cities.find({'_id': {'$in': ids['city_ids'] }},{'coordinates': 1})
 	for t in book_result:
 		title_array.append(t['title'])
 	for cords in city_result:
-		cord_array.append((float(cords['x_cord']),float(cords['y_cord'])))
+		cord_array.append((float(cords[0]),float(cords[1])))
 	r_dict = get_titles_and_cords_for_author_to_dict(title_array, cord_array)
 	return r_dict
 
