@@ -46,7 +46,7 @@ def get_titles_and_cords_for_author(author):
 	for t in book_result:
 		title_array.append(t['title'])
 	for cords in city_result:
-		cord_array.append((float(cords[0]),float(cords[1])))
+		cord_array.append(cords)
 	r_dict = get_titles_and_cords_for_author_to_dict(title_array, cord_array)
 	return r_dict
 
