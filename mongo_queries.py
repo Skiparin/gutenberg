@@ -28,10 +28,10 @@ def get_titles_for_city(city):
 def get_cities_for_title(title):
 	city_array = []
 	ids = books.find_one({"title": title},{"city_ids":1})
-	city_result = cities.find_one({'_id': {'$in': ids['city_ids'] }}, {'location': 1})
+	city_result = cities.find({'_id': {'$in': ids['city_ids'] }},{'location': 1})
 	array = []
 	for cords in city_result:
-		array.append(float(cords['coordinates']))
+		array.append(float(cords['location']['coordinates']["x_cord"]), float(cords['location']['coordinates']["y_cord"]))
 	print(array)
 	return array
 
