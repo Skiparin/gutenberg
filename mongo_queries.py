@@ -56,13 +56,10 @@ def get_title_for_cords():
 		temp_array.append(i['book_ids'])
 	temp_flat = [item for sublist in temp_array for item in sublist]
 	temp_set = set(temp_flat)
-	print(temp_set)
-	"""
-	book_result = books.find({'_id': {'$in': temp_array }}, {'title': 1})
+	book_result = books.find({'_id': {'$in': temp_set }}, {'title': 1})
 	for book in book_result:
 		book_array.append(book['title'])
 	print(book_array)
-	"""
 
 def get_titles_and_cords_for_author_to_dict(title_array, cord_array):
 	r_dict = {}
