@@ -31,9 +31,10 @@ def get_cities_for_title(title):
 	city_result = cities.find({'_id': {'$in': ids['city_ids'] }},{'coordinates': 1})
 	array = []
 	for c in city_result:
-		array.append(c)
+		array.append([c[0], c[1]])
 
 		#array.append((float(r['coordinates'[0]]),float(r['coordinates'[1]])))
+	print(array)
 	return array
 
 def get_titles_and_cords_for_author(author):
@@ -47,7 +48,6 @@ def get_titles_and_cords_for_author(author):
 	for cords in city_result:
 		cord_array.append(cords)
 	r_dict = get_titles_and_cords_for_author_to_dict(title_array, cord_array)
-	print(r_dict)
 	return r_dict
 
 def get_title_for_cords():
